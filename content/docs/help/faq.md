@@ -3,7 +3,7 @@ title = "FAQ"
 description = "Answers to frequently asked questions."
 date = 2022-02-01T00:00:00+00:00
 updated = 2022-02-01T00:00:00+00:00
-draft = true
+draft = false
 weight = 30
 sort_by = "weight"
 template = "docs/page.html"
@@ -16,9 +16,11 @@ top = false
 
 ## What is Signum?
 
-AdiDoks is a Zola theme for Documentation's sites, ported by the Hugo Theme
-[Doks](https://getdoks.org), which is a pretty nice theme. Thanks a lot to 
-[*h-enk*](https://github.com/h-enk), the creator of the [Doks](https://getdoks.org).
+Signum is a proof-of-capacity-and-stake crypto currency. It is less electrically demanding than almost any other coin
+and encourages the recycling of hard drives, extending the useful life of even dying hard drives, and delaying their
+entry into landfills.
+
+See the official [Signum Network website](http://signum.network) for more information.
 
 ## Keyboard shortcuts for search?
 
@@ -29,11 +31,5 @@ AdiDoks is a Zola theme for Documentation's sites, ported by the Hugo Theme
 
 ## Other documentation?
 
-- [Netlify](https://docs.netlify.com/)
 - [Zola](https://www.getzola.org/documentation/getting-started/overview/)
 
-## Contact the creator?
-
-Send *Aaran Xu* an E-mail:
-
-- <aaranxu@outlook.com>
