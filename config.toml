@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://adidoks.netlify.com"
+base_url = "https://signumoasis.xyz"
 title = "Signum Oasis"
 description = "A documentation project for the Signum Crypto Currency."
 
