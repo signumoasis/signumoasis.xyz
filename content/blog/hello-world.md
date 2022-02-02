@@ -19,3 +19,5 @@ and the way data is cryptographically signed and stored.
 
 This site is not necessarily intended for user-based tutorials, and the focus for contributers should not be on providing how-to's
 for various Signum related software. Instead, it's designed to allow developers to understand the Signum node and its interactions.
+
+Please enjoy learning about Signum software.
