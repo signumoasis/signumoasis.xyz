@@ -16,10 +16,6 @@ compile_sass = true
 # Whether to generate a feed file for the site
 generate_feed = true
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
@@ -39,6 +35,9 @@ include_description = false
 include_content = true
 
 [markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
 
 [extra]
 
