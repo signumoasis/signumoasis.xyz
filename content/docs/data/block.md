@@ -158,10 +158,16 @@ Notes about the structure:
 
 
 
-## Structure in BRS Database
+## Database Structure - BRS
+
+_as of v3.3.2_
+
 **NOTE: THIS SECTION IS INCOMPLETE**
 
-* **List of Transaction IDs**
+This is a list of the fields seen in the node database along with their database built-in datatypes.
+This is unlikely to change with versions of the node unless a new block version is debuted.
+
+<!-- * **List of Transaction IDs**
     * A list of all the transactions' IDs that are included in this block.
 * **Cumulative Difficulty**
     * This is used to prevent nothing-at-stake problems during potential forks.
@@ -173,4 +179,84 @@ Notes about the structure:
     * The height of this block in the chain.
 * **Block ID**
     * The first 8 bytes of this block's contents converted into a number.
-    * _TODO: Add the datatype of the number_
+    * _TODO: Add the datatype of the number_ -->
+
+* **Database ID**
+    * Field name: `db_id`
+    * Data type: `BIGINT`
+
+* **Block ID**
+    * Field name: `id`
+    * Data type: `BIGINT`
+
+* **Version**
+    * Field name: `version`
+    * Data type: `INTEGER`
+
+* **Timestamp**
+    * Field name: `timestamp`
+    * Data type: `INTEGER`
+
+* **Previous Block ID**
+    * Field name: `previous_block_id`
+    * Data type: `INTEGER`
+
+* **Total Amount**
+    * Field name: `total_amount`
+    * Data type: `BIGINT`
+
+* **Total Fee**
+    * Field name: `total_fee`
+    * Data type: `BIGINT`
+
+* **Payload Length**
+    * Field name: `payload_length`
+    * Data type: `INTEGER`
+
+* **Generator Public Key**
+    * Field name: `generator_public_key`
+    * Data type: `VARBINARY`
+
+* **Previous Block Hash**
+    * Field name: `previous_block_hash`
+    * Data type: `VARBINARY`
+
+* **Cumulative Difficulty**
+    * Field name: `cumulative_difficulty`
+    * Data type: `VARBINARY`
+
+* **Base Target**
+    * Field name: `base_target`
+    * Data type: `BIGINT`
+
+* **Next Block ID**
+    * Field name: `next_block_id`
+    * Data type: `BIGINT`
+
+* **Height**
+    * Field name: `height`
+    * Data type: `INTEGER`
+
+* **Generation Signature**
+    * Field name: `generation_signature`
+    * Data type: `VARBINARY`
+
+* **Block Signature**
+    * Field name: `block_signature`
+    * Data type: `VARBINARY`
+
+* **Payload Hash**
+    * Field name: `payload_hash`
+    * Data type: `VARBINARY`
+
+* **Generator ID**
+    * Field name: `generator_id`
+    * Data type: `BIGINT`
+
+* **Nonce**
+    * Field name: `none`
+    * Data type: `BIGINT`
+
+* **Block ATs**
+    * Field name: `ats`
+    * Data type: `VARBINARY`
