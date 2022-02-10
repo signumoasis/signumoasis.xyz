@@ -151,6 +151,7 @@ Notes about the structure:
 
 ## Database Fields in BRS
 _as of v3.3.2_
+
 **NOTE: THIS SECTION IS INCOMPLETE**
 
 This is a list of the fields seen in the node database along with their database built-in datatypes.
