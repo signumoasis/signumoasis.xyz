@@ -14,7 +14,7 @@ toc = true
 top = false
 +++
 
-## Json Model
+## JSON Model
 
 NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.
 
