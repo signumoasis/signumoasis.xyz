@@ -16,8 +16,9 @@ top = false
 
 ## Json Model
 
-The block is represented in json when transmitted over the API. The fields are listed here in the order
-they are seen in the BRS software. However, json does not require them in this order, so long as they are present.
+NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.
+
+The fields are listed here in the order they are seen in the BRS software. However, json does not require them in this order, so long as they are present.
 
 * **Version**
     * Key: `version`
