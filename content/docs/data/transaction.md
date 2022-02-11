@@ -16,6 +16,8 @@ top = false
 
 ## JSON Model
 
+NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.
+
 * **Type**
     * Key: `type`
     * Value Datatype: `number` (`byte` encoded as a number)
@@ -64,12 +66,11 @@ top = false
 
 1. **Transaction Type**
     * Datatype: `Byte`
-    * The type of transaction: _TODO: LIST TYPES_
+    * The type of transaction. [(See Transaction Types and Subtypes section)](#transaction-types-and-subtypes)
 
 1. **Transaction Subtype**
     * Datatype: `byte`
-    * The subtype of the transaction: _TODO: LIST SUBTYPES OR LINK TO A LIST_
-    * _TODO: EXPLAIN THE BIT SHIFT, OR, and AND OPERATIONS_
+    * The subtype of the transaction. [(See Transaction Types and Subtypes section)](#transaction-types-and-subtypes)
 
 1. **Timestamp**
     * Datatype: `Signed 32 bit integer`
@@ -153,3 +154,104 @@ top = false
     * ???
 
 ## Database Fields in BRS
+
+## Transaction Types and Subtypes
+
+* **Payment**
+    * Value: `0`
+    * Subtypes:
+        * Ordinary Payment
+            * Value: `0`
+        * Ordinary Payment Multi-out
+            * Value: `1`
+        * Ordinary Payment Same-out
+            * Value: `2`
+* **Messaging**
+    * Value: `1`
+    * Subtypes:
+        * _Arbitray Message_
+            * Value: `0`
+        * _Alias Assignment_
+            * Value: `1`
+        * _Account Info_
+            * Value: `5`
+        * _Alias Sell_
+            * Value: `6`
+        * _Alias Buy_
+            * Value: `7`
+* **Colored Coins**
+    * Value: `2`
+    * Subtypes:
+        * _Asset Issuance_
+            * Value: `0`
+        * _Asset Transfer_
+            * Value: `1`
+        * _Ask Order Placement_
+            * Value: `2`
+        * _Bid Order Placement_
+            * Value: `3`
+        * _Ask Order Cancellation_
+            * Value: `4`
+        * _Bid Order Cancellation_
+            * Value: `5`
+        * _Asset Mint_
+            * Value: `6`
+        * _Add Treasury Account_
+            * Value: `7`
+        * _Distribute to Holders_
+            * Value: `8`
+* **Digital Goods**
+    * Value: `3`
+    * Subtypes:
+        * _Listing_
+            * Value: `0`
+        * _Delisting_
+            * Value: `1`
+        * _Price Change_
+            * Value: `2`
+        * _Quantity Change_
+            * Value: `3`
+        * _Purchase_
+            * Value: `4`
+        * _Delivery_
+            * Value: `5`
+        * _Feedback_
+            * Value: `6`
+        * _Refund_
+            * Value: `7`
+* **Account Control**
+    * Value: `4`
+    * Subtypes:
+        * _Effective Balance Leasing_
+            * Value: `0`
+* **Mining**
+    * Value: `20`
+    * Subtypes:
+        * _Reward Recipient Assignment_
+            * Value: `0`
+        * _Commitment Add_
+            * Value: `1`
+        * _Commitment Remove_
+            * Value: `2`
+* **Advanced Payment**
+    * Value: `21`
+    * Subtypes:
+        * _Escrow Creation_
+            * Value: `0`
+        * _Escrow Sign_
+            * Value: `1`
+        * _Escrow Result_
+            * Value: `2`
+        * _Subscription Subscribe_
+            * Value: `3`
+        * _Subscription Cancel_
+            * Value: `4`
+        * _Subscription Payment_
+            * Value: `5`
+* **Automated Transaction**
+    * Value: `22`
+    * Subtypes:
+        * _Creation_
+            * Value: `0`
+        * _NXT Payment_
+            * Value: `1`
