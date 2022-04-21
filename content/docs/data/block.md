@@ -1,6 +1,6 @@
 +++
 title = "Block"
-description = "A description of a single Block."
+description = "A description of a single block."
 date = 2022-02-01T00:00:00+00:00
 updated = 2022-02-01T00:00:00+00:00
 draft = false
@@ -9,15 +9,16 @@ sort_by = "weight"
 template = "docs/page.html"
 
 [extra]
-# lead = "A description of a single Block."
+# lead = "A description of a single block."
 toc = true
 top = false
 +++
 
-## Json Model
+## JSON Model
 
-The block is represented in json when transmitted over the API. The fields are listed here in the order
-they are seen in the BRS software. However, json does not require them in this order, so long as they are present.
+NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.
+
+The fields are listed here in the order they are seen in the BRS software. However, json does not require them in this order, so long as they are present.
 
 * **Version**
     * Key: `version`
@@ -67,7 +68,7 @@ they are seen in the BRS software. However, json does not require them in this o
     * Value Datatype: `string` (Hex encoded bytes)
 
 
-## Structure of Bytes to Forge the Block
+## Structure of Bytes Representation
 
 Here is the list of fields that should exist on a block in memory to properly create the hash and forge the block.
 
@@ -81,7 +82,6 @@ Notes about the structure:
 1. **Block Version Number**
     * Datatype: `Signed 32 bit integer`
     * What block version this block is. As the protocol and data evolve with newer versions of the software, this will increment.
-    * Versions in the database: 1, 2, 3
     * Current version: `3`
 
 2. **Timestamp**
@@ -150,16 +150,7 @@ Notes about the structure:
     * A hash generated from the forger's private key and the block contents.
 
 
-
-
-
-
-
-
-
-
-## Database Structure - BRS
-
+## Database Fields in BRS
 _as of v3.3.2_
 
 **NOTE: THIS SECTION IS INCOMPLETE**
