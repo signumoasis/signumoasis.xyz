@@ -32,4 +32,3 @@ See the official [Signum Network website](http://signum.network) for more inform
 ## Other documentation?
 
 - [Zola](https://www.getzola.org/documentation/getting-started/overview/)
-
