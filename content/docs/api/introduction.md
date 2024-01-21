@@ -3,7 +3,7 @@ title = "Introduction"
 description = "A quick introduction to the APIs that run Signum."
 date = 2024-01-01T00:00:00+00:00
 updated = 2024-01-01T00:00:00+00:00
-draft = true
+draft = false
 weight = 10
 sort_by = "weight"
 template = "docs/page.html"
@@ -26,7 +26,7 @@ of times, and unlike the P2P API, it will not blacklist your client. The primary
 purpose of this API is to allow the management of individual Signum accounts,
 sending and receiving transactions, and other user tasks.
 
-[Read about the Wallet API →](../wallet.md)
+<!-- [Read about the Wallet API →](../wallet) -->
 
 ## Peer to Peer (P2P) API
 
@@ -36,4 +36,4 @@ the wallet API. This should be done sparingly, however, as the node software is 
 to automatically black list IP addresses making incorrect requests, or spamming
 the API.
 
-[Read about the Peer to Peer API →](../p2p.md)
+[Read about the Peer to Peer API →](../p2p)
