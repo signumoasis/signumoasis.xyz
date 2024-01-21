@@ -15,6 +15,7 @@ top = false
 +++
 
 ## What is Signum?
+
 Signum is a distributed blockchain technology based on a proof of capacity and stake instead of a proof of work.
 Similar to other blockchains, Signum has its own digital currency called Signa. However, it also hosts hundreds of
 other 'tokens' that can be traded just like Signa with a built-in marketplace.
@@ -25,6 +26,7 @@ and low energy cost make it a particularly effective choice to move into the fut
 
 This documentation is designed to serve as a reference for the programmers building the Signum platform. As such, it
 may be beyond the understanding many users, and those interested in the user side should check out [https://www.signum.network/](https://www.signum.network/) instead, or [join the official Signum discord server](https://discord.gg/8XpJqxsD3F).
+
 ## Quick Start
 
 Start here for a basic overview of the Signum node and its protocols. [Quick Start →](../quick-start/)
