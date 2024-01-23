@@ -268,7 +268,8 @@ This increases the jump value and searches a greater range for a common mileston
 It can only happen if we get a common milestone that isn't the same block as
 our max height. If the target node is at block 100 and we're at block 89, the first search
 with `lastBlockId` should count back by 10s, giving a common block of 80, but the second
-search looks to count backwards by 20s. This is likely to allow the node to quickly search
+search looks to count backwards by 20s. It will increase the jump distance in relation to
+the distance between the two nodes' heights. This is likely to allow the node to quickly search
 the entire blockchain for a common block.
 
 #### Initial Request
