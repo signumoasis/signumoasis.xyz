@@ -437,7 +437,7 @@ Example Response:
 }
 ```
 
-### getBlocksFromHeigt
+### getBlocksFromHeight
 
 Description of request.
 
