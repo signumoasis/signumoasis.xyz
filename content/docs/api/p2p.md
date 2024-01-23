@@ -381,28 +381,60 @@ Example Response when multiple milestones exist (only when sending `lastBlockId`
 
 ### getNextBlockIds
 
-Description of request.
+This endpoint returns the IDs of the next up to 100 blocks following the block for which
+an ID is provided.
 
-Returns an object.
+If 10 blocks exist, with IDs 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, then calling this action with
+a `blockId` of '7' will return an array of 8, 9, and 10.
+
+Request Fields:
+
+* `blockId` the ID of any block in the chain.
 
 Example HTTP Request:
 
 ```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 105
 
+{
+    "protocol": "B1",
+    "requestType": "getNextBlockIds",
+    "blockId": "17655301179078078080"
+}
 ```
 
 Example curl Request:
 
 ```bash
-
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getNextBlockIds",
+    "blockId": "17655301179078078080"
+}'
 ```
 
 Response Fields:
 
+* `nextBlockIds` an array of up to 100 block IDs immediately following the ID in the request.
+
 Example Response:
 
 ```json
-
+{
+    "nextBlockIds": [
+        "17509496500772329464",
+        "9851554959281573956"
+    ]
+}
 ```
 
 ### getBlocksFromHeigt
