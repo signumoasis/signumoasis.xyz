@@ -270,16 +270,70 @@ Description of request.
 
 Returns an object.
 
-Example HTTP Request:
+#### Initial Request
+
+Example HTTP Request for first request:
 
 ```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 111
 
+{
+    "protocol": "B1",
+    "requestType": "getMilestoneBlockIds",
+    "lastBlockId": 8380252857853969990
+}
 ```
 
-Example curl Request:
+Example curl Request for first request:
 
 ```bash
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getMilestoneBlockIds",
+    "lastBlockId": 8380252857853969990
+}'
+```
 
+#### Subsequent Requests
+
+Example HTTP Request for subsequent requests:
+
+```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 123
+
+{
+    "protocol": "B1",
+    "requestType": "getMilestoneBlockIds",
+    "lastMilestoneBlockId": "13696763374077953626"
+}
+```
+
+Example curl Request for subsequent requests:
+
+```bash
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getMilestoneBlockIds",
+    "lastMilestoneBlockId": "13696763374077953626"
+}'
 ```
 
 Response Fields:
@@ -290,7 +344,7 @@ This field will only appear alongside an array of 1 block ID. This field does no
 display false at all, but will not exist in the JSON object if the block returned
 is not the final block in the chain.
 
-Example Response:
+Example Response when multiple milestones exist:
 
 ```json
 {
@@ -306,6 +360,17 @@ Example Response:
         "7188559233614535978",
         "950191874937948114"
     ]
+}
+```
+
+Example Response when multiple milestones exist (only when sending `lastBlockId`):
+
+```json
+{
+    "milestoneBlockIds": [
+        "950191874937948114"
+    ],
+    "last": true
 }
 ```
 
