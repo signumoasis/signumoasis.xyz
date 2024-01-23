@@ -272,6 +272,9 @@ search looks to count backwards by 20s. It will increase the jump distance in re
 the distance between the two nodes' heights. This is likely to allow the node to quickly search
 the entire blockchain for a common block.
 
+If a `lastMilestoneBlockId` is requested that the target doesn't have, it appears to return
+a the set of blocks identical to the initial query.
+
 #### Initial Request
 
 Example HTTP Request for first request:
