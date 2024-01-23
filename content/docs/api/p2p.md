@@ -3,7 +3,7 @@ title = "Peer to Peer (P2P) API"
 description = "A detailed explanation of the peer to peer API."
 date = 2024-01-01T00:00:00+00:00
 updated = 2024-01-01T00:00:00+00:00
-draft = true
+draft = false
 weight = 10
 sort_by = "weight"
 template = "docs/page.html"
@@ -264,11 +264,12 @@ will cover 100 blocks of the target node's chain.
 
 If it already has found a milestone block id, it will instead include the field
 `lastMilestoneBlockId` in the request to the target node.
-**NOTE: VERIFY THIS AGAIN** This seems to increase the jump and search a greater range for a common milestone....but I'm not sure why. It can only happen if we get a common milestone that isn't the same block as our max height. If the target node is at block 100 and we're at block 89, the first search with `lastBlockId` should count back by 10s, giving a common block of 80, but the second search looks to count backwards by 20s. I think it should be counting from 80 upward by a smaller jump, or from the chain height down to 80 by a smaller jump.
-
-Description of request.
-
-Returns an object.
+This increases the jump value and searches a greater range for a common milestone.
+It can only happen if we get a common milestone that isn't the same block as
+our max height. If the target node is at block 100 and we're at block 89, the first search
+with `lastBlockId` should count back by 10s, giving a common block of 80, but the second
+search looks to count backwards by 20s. This is likely to allow the node to quickly search
+the entire blockchain for a common block.
 
 #### Initial Request
 
