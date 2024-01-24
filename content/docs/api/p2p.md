@@ -439,28 +439,133 @@ Example Response:
 
 ### getBlocksFromHeight
 
-Description of request.
+Returns a JSON object containing an array of entire blocks, ordered oldest to newest,
+starting with the block immediately following the height requested with `height`, and
+optionally limited to `numBlocks`.
 
-Returns an object.
+Request Fields:
+
+* `height` the height in the blockchain to begin.
+* `numBlocks` optional limit on the number of blocks to return.
 
 Example HTTP Request:
 
 ```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 111
 
+{
+    "protocol": "B1",
+    "requestType": "getBlocksFromHeight",
+    "height": 1962,
+    "numBlocks": 2
+}
 ```
 
 Example curl Request:
 
 ```bash
-
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getBlocksFromHeight",
+    "height": 1962,
+    "numBlocks": 2
+}'
 ```
 
 Response Fields:
 
+* `nextBlocks` an array of blocks beginning directly after the height requested.
+
 Example Response:
 
 ```json
-
+{
+    "nextBlocks": [
+        {
+            "version": 3,
+            "timestamp": 501340,
+            "previousBlock": "4584982169599395303",
+            "totalAmountNQT": 0,
+            "totalFeeNQT": 0,
+            "totalFeeCashBackNQT": 0,
+            "totalFeeBurntNQT": 0,
+            "payloadLength": 0,
+            "payloadHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "generatorPublicKey": "f25d24f1ff10c69c23e75b54a9fe50c5ee2bfdd6c3418d09d84fe062b253e23c",
+            "generationSignature": "ed1bc0818f115fab0cd249bc5c789c7a666b6f90742cc64423767952f9cee959",
+            "previousBlockHash": "e7c578b0fd20a13f5b9385a710714386d1d57ff6dfd665a6197c8ca8167faac6",
+            "blockSignature": "b412cfa25280a518080c702e84153478758a4b3640772dd8239aaf74c933e30ddd70ce6b1029e98802778987afad0065aa00f3dd776688a8a7eaf5f69127e2ae",
+            "transactions": [],
+            "nonce": "1166774",
+            "baseTarget": "139287089",
+            "blockATs": null
+        },
+        {
+            "version": 3,
+            "timestamp": 501730,
+            "previousBlock": "9354106736727793056",
+            "totalAmountNQT": 1000000000,
+            "totalFeeNQT": 200000000,
+            "totalFeeCashBackNQT": 0,
+            "totalFeeBurntNQT": 0,
+            "payloadLength": 334,
+            "payloadHash": "4e48737232b06421ea2b38603f78975a875ca09ff9991d4ca0f5519c0818c0c7",
+            "generatorPublicKey": "63cd1465f9dcee200deaeea57be83d1765704420fbd1d980ffde256717927d5a",
+            "generationSignature": "f6e7cf9cf3cba538f926845c200180a52035f3f3612bf569d95d38f54b562beb",
+            "previousBlockHash": "a09dbf518476d081c72a897f2d3836a6ed36837f6dbe2fe5f75f88daef90e2af",
+            "blockSignature": "df5bbee02a813dbc06df695a525bd957220b4ca17e80066a8b81918defcc2f0aaf2916a3927626371be760d61d82bbe28251c7df4bf0d7129f7f1ab4d0d2342b",
+            "transactions": [
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 501385,
+                    "deadline": 1440,
+                    "senderPublicKey": "0fcf782f9b032b1bbaf34fc68822909f8f3bb6e40fe625b5a50d5cf82eec071d",
+                    "recipient": "16422175186807093330",
+                    "amountNQT": 1000000000,
+                    "feeNQT": 100000000,
+                    "ecBlockHeight": 0,
+                    "ecBlockId": "0",
+                    "cashBackId": "0",
+                    "signature": "4f88a148288c1cf6ba1e2f431f136d9e4e070be9b89d46e9e654db5a286ee1084752a78871dc4437bcbd29d266befa69cc297d2f0b52a685aa63364255fb67c8",
+                    "attachment": {},
+                    "version": 0
+                },
+                {
+                    "type": 1,
+                    "subtype": 0,
+                    "timestamp": 501461,
+                    "deadline": 1440,
+                    "senderPublicKey": "b2c5645a7a7d137f8e25bf2c3a687ced8bdd2cbf28ded07234e58ed8af4ab341",
+                    "recipient": "13096661501486641671",
+                    "amountNQT": 0,
+                    "feeNQT": 100000000,
+                    "ecBlockHeight": 0,
+                    "ecBlockId": "0",
+                    "cashBackId": "0",
+                    "signature": "ca8a63619d79306e261cf21112f5e8b75aa35b33edfa73bafca051dadfdcea0c827a53daf950fe7568c1565d948b30d6ba751c977e5bacab2081e0ef66e35eef",
+                    "attachment": {
+                        "message": "7468616e6b732062726f",
+                        "messageIsText": false
+                    },
+                    "version": 0
+                }
+            ],
+            "nonce": "157680",
+            "baseTarget": "146357575",
+            "blockATs": null
+        }
+    ]
+}
 ```
 
 ### getNextBlocks
