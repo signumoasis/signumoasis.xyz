@@ -928,9 +928,12 @@ Example Response:
 
 ### processBlock
 
-Description of request.
+Submits a collection of blocks to a node to be processed and recorded.
 
-Returns an object.
+Request Fields:
+
+* `previousBlock` the ID of a block which submitted blocks must follow. Should be the top
+of the blockchain. Used as an initial check to ensure valid blocks are being submitted.
 
 Example HTTP Request:
 
@@ -945,6 +948,8 @@ Example curl Request:
 ```
 
 Response Fields:
+
+* `accepted` true or false depending on whether the blocks were valid to accept or not.
 
 Example Response:
 
