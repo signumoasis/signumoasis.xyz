@@ -570,28 +570,242 @@ Example Response:
 
 ### getNextBlocks
 
-Description of request.
+Returns a JSON object containing an array of blocks following a request `blockId`.
+The number of blocks received from this request is either 1/2 of the Maximum Rollback value,
+or a number set in the node's configuration.
 
-Returns an object.
+Request Fields:
+
+* `blockId` the ID of a block in the chain.
 
 Example HTTP Request:
 
 ```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 103
 
+{
+    "protocol": "B1",
+    "requestType": "getNextBlocks",
+    "blockId": "12719136861414771996"
+}
 ```
 
 Example curl Request:
 
 ```bash
-
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getNextBlocks",
+    "blockId": "12719136861414771996"
+}'
 ```
 
 Response Fields:
 
+* `nextBlocks` an array of blocks beginning directly after the height requested.
+
 Example Response:
 
 ```json
-
+{
+    "nextBlocks": [
+        {
+            "version": 4,
+            "timestamp": 298332436,
+            "previousBlock": "12719136861414771996",
+            "totalAmountNQT": 3400000000,
+            "totalFeeNQT": 108600000,
+            "totalFeeCashBackNQT": 1250000,
+            "totalFeeBurntNQT": 103600000,
+            "payloadLength": 977,
+            "payloadHash": "81e990d0d47783096a959459fe03d5dc1ed0b1725f9420e9049892c0d501c7b7",
+            "generatorPublicKey": "2856ad42cf82d40beeb51383771952ea0d76b67c33b88ce69ccea5cdca1a5a32",
+            "generationSignature": "ebd0ee5d74a45e6a63b82222818623a61e332bf5c1c87093bf04277416f097fb",
+            "previousBlockHash": "1c4d342a967383b0257c1bcb8ab3ed73a4fb510a09fd16673dba17224b02b631",
+            "blockSignature": "0665aa3eb6ba107eea5f85419809f9f07f0ae3bcd8030e1902719ada5072e60b3d480e8d09fc554f56b5d888cae4008da2ca65367d6cb003edab0a4e0125ea80",
+            "transactions": [
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332398,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "11130321392388236382",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "df8e0e4316989534eaca8441c759be609652ad4e5e7ffc4139d998bae3375b0356dc187890107aebdd0c8a8bef0f9dc4c7cd7693221c524268aa08bf7cdf2c98",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332400,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "13831709662995834087",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "a722057e0a9e2bafbd2335e22415cf2cd569679a7165963e4dcea3dd230f720763b01101737b447bfcc4a63c1061c9481610106885f5c6c5c1facdf489a4c6bf",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 20,
+                    "subtype": 1,
+                    "timestamp": 298332277,
+                    "deadline": 1440,
+                    "senderPublicKey": "6ef637ea38abdaf5aab4c2944251ce89b10b9f4f1e88996fa348706d9f089e07",
+                    "amountNQT": 0,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236838,
+                    "ecBlockId": "9840412014607810403",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "d8ed7fe3b96d1e6f61bf2775d2de3529451c869b80b184dc424d5c5e3a490f0fc0cbdb68214944152572d0cea65a6a67d1a7779e03314540660b50c0d2575001",
+                    "attachment": {
+                        "version.CommitmentAdd": 1,
+                        "amountNQT": 1000000000
+                    },
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332268,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "13831709662995834087",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236838,
+                    "ecBlockId": "9840412014607810403",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "54c3c682b0d6e7b54c90ff9b1d0d9c1e73feb9ab8d398f76390f98511c979b040c73fb2f95c2e0965fc6310035895d98d9ca639f9095897e726df1a49eb5cd1f",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332267,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "11130321392388236382",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236838,
+                    "ecBlockId": "9840412014607810403",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "66f72f975312213abb32069a95f8ec3aebc07b3069739f86d0d877c6b2465c0ff61f74860005a0ead725332ab9f8b22792de60666a41a14bc886a0c5925caf06",
+                    "attachment": {},
+                    "version": 2
+                }
+            ],
+            "nonce": "17170354452813001494",
+            "baseTarget": "6032946343509152816",
+            "blockATs": "9949cc89a184bd46f83d3d4cc6d047efcdae2109a21a22b60319e3bdff90b38894e0ceeca74decadb3b6b7775c2f743e"
+        },
+        {
+            "version": 4,
+            "timestamp": 298332687,
+            "previousBlock": "14533852665764262390",
+            "totalAmountNQT": 13390000000,
+            "totalFeeNQT": 106900000,
+            "totalFeeCashBackNQT": 1000000,
+            "totalFeeBurntNQT": 102900000,
+            "payloadLength": 808,
+            "payloadHash": "a4c1983e245981f3710f5131c7237f77b8a678ef9303e977bcb839888ac5743c",
+            "generatorPublicKey": "59ddca1ec71a228b57de2eb7976bb6de8faec4c47ed9282b65192ed09055db35",
+            "generationSignature": "03faf674bc18d95949f94f015a937c6e7317005edc86d19fa13d099ee5d4b1dc",
+            "previousBlockHash": "f631bef0fe9db2c98b1770ee884ddd1c30f3ba3aa9628868a667e7787545c063",
+            "blockSignature": "0fe836d9771642364bb0fd369a1e2a93d4b2554c4a9e4778fe59b1c98a6bb60af78997815c3b68b877fdab3444a6d46a36bfb7609c4943cb1d0c1437b89ee9ed",
+            "transactions": [
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332661,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "13831709662995834087",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "e1bcff2121e8e0f3e9349cc01aa30f15fe555eef3511cac68b42d85006685e0cabf8c4a77102851b485828475559cfb825836302e56c52421becdf36a992d018",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332530,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "11130321392388236382",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "91d42399b2fb6522c38d321ef386ace46a2e38af77a36fadc982e5eb4370530590943616fb0e308a89794c5dfcfa2b61cafadc5b761f2c7ba8ad3ad6e9d358a3",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332531,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "13831709662995834087",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "7cc29eacce14bf231a5ed0cdc85fd6d297d2bd2a7794b71ce2631e56b67ea0065b667f4ae01e864599b47032823c3753397086bad6813dd2cacb1e0d61ac1787",
+                    "attachment": {},
+                    "version": 2
+                },
+                {
+                    "type": 0,
+                    "subtype": 0,
+                    "timestamp": 298332660,
+                    "deadline": 24,
+                    "senderPublicKey": "0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c",
+                    "recipient": "11130321392388236382",
+                    "amountNQT": 500000000,
+                    "feeNQT": 1000000,
+                    "ecBlockHeight": 1236839,
+                    "ecBlockId": "5664028750724787922",
+                    "cashBackId": "13420738867631717395",
+                    "signature": "629983e40d1545c489ee1b523e12197021284665d96675088bab7dce8cfc8e089791f1e598a88c6889ffa327caf7ddca8cc76ef9f2014577813b56f7e6be2580",
+                    "attachment": {},
+                    "version": 2
+                }
+            ],
+            "nonce": "201612246958",
+            "baseTarget": "6032678543708253984",
+            "blockATs": "516f0885d7915f8c4660998cbc72aa32c04d5eadeb02685163f82fb370d341f433e8cac1145a0c831fdc89c0ee066ac10319e3bdff90b388b92f277dc4a344fa6f2599caa5d15922"
+        }
+    ]
+}
 ```
 
 ### getPeers
@@ -648,28 +862,68 @@ Example Response:
 
 ### getUnconfirmedTransactions
 
-Description of request.
-
-Returns an object.
+Returns a JSON array with a list of of transaction objects the node is aware of but that have yet
+to be confirmed by being forged into a block.
 
 Example HTTP Request:
 
 ```http
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: 76
 
+{
+    "protocol": "B1",
+    "requestType": "getUnconfirmedTransactions"
+}
 ```
 
 Example curl Request:
 
 ```bash
-
+curl --location 'http://p2p.signumoasis.xyz:80' \
+--header 'User-Agent: BRS/3.8.0' \
+--header 'Connection: close' \
+--header 'Content-Type: application/json' \
+--data '{
+    "protocol": "B1",
+    "requestType": "getUnconfirmedTransactions"
+}'
 ```
 
 Response Fields:
 
+* `unconfirmedTransactions` an array of objects representing transactions.
 Example Response:
 
 ```json
-
+{
+    "unconfirmedTransactions": [
+        {
+            "type": 2,
+            "subtype": 1,
+            "timestamp": 298326786,
+            "deadline": 1440,
+            "senderPublicKey": "789e1ecac7abc4ff7e776f2dedd2e9be6083d010efa0c6913f05507aa77b9340",
+            "recipient": "17842702224298695831",
+            "amountNQT": 0,
+            "feeNQT": 2000000,
+            "ecBlockHeight": 1236814,
+            "ecBlockId": "11396976196756642613",
+            "cashBackId": "17909721588112212347",
+            "signature": "29f4548fb0a4a509a11c23fe9d8de49becc7d802dde4e56ce427be373b3d24038b0e5dff01438d8a42cb2db9cd76e99997394bb9ec0745911e72629c0bc24193",
+            "attachment": {
+                "version.AssetTransfer": 1,
+                "asset": "14328689902698254062",
+                "quantityQNT": 1000000
+            },
+            "version": 2
+        }
+    ]
+}
 ```
 
 ### processBlock
