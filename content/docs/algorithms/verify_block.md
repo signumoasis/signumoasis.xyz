@@ -1,5 +1,5 @@
 +++
-title = "Block Verification"
+title = "Block"
 description = "A description of a single block."
 date = 2022-02-01T00:00:00+00:00
 updated = 2022-02-01T00:00:00+00:00
