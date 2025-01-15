@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://signumoasis.xyz/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>Transaction | Signum Oasis</title>
+<meta name="description" content="A description of a single transaction.">
+<link rel="canonical" href="https://signumoasis.xyz/docs/data/transaction/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://signumoasis.xyz/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://signumoasis.xyz/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Data",
+            "item": "https://signumoasis.xyz/docs/data/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Transaction",
+            "item": "https://signumoasis.xyz/docs/data/transaction/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://signumoasis.xyz/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://signumoasis.xyz/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://signumoasis.xyz/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://signumoasis.xyz/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://signumoasis.xyz">Signum Oasis</a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/signum-rust/signumoasis.xyz"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Docs</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://signumoasis.xyz/blog/">Blog</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>Getting Started</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Introduction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>API</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/api/introduction/">Introduction</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/api/p2p/">Peer to Peer (P2P) API</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>Data</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/data/block/">Block</a></li>
+							                           
+									<li><a class="docs-link active" href="https://signumoasis.xyz/docs/data/transaction/">Transaction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+					
+					
+					
+							<h3>Contributing</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/how-to-contribute/">How to Contribute</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>Help</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/help/faq/">FAQ</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+  <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+  	<div class="page-links">
+  			<h3>On this page</h3>
+  			<nav id="TableOfContents">
+  					<ul>
+  							
+  							<li><a href="https://signumoasis.xyz/docs/data/transaction/#json-model">JSON Model</a></li>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/data/transaction/#structure-of-bytes-representation">Structure of Bytes Representation</a></li>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/data/transaction/#database-fields-in-brs">Database Fields in BRS</a></li>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/data/transaction/#transaction-types-and-subtypes">Transaction Types and Subtypes</a></li>
+  							
+  							
+  					</ul>
+  			</nav>
+  	</div>
+  </nav>
+  
+
+      <main class="docs-content col-lg-11 col-xl-9">
+        <h1>Transaction</h1>
+        
+        <h2 id="json-model">JSON Model</h2>
+<p>NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.</p>
+<ul>
+<li><strong>Type</strong>
+<ul>
+<li>Key: <code>type</code></li>
+<li>Value Datatype: <code>number</code> (<code>byte</code> encoded as a number)</li>
+</ul>
+</li>
+<li><strong>Sub Type</strong>
+<ul>
+<li>Key: <code>subtype</code></li>
+<li>Value Datatype: <code>number</code> (<code>byte</code> encoded as a number)</li>
+</ul>
+</li>
+<li><strong>Timestamp</strong>
+<ul>
+<li>Key: <code>timestamp</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+<li><strong>Deadline</strong>
+<ul>
+<li>Key: <code>deadline</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+<li><strong>Sender Public Key</strong>
+<ul>
+<li>Key: <code>senderPublicKey</code></li>
+<li>Value Datatype: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+</li>
+<li><strong>Recipient</strong>
+<ul>
+<li>Key: <code>recipient</code></li>
+<li>Value Datatype: <code>string</code> (<code>Unsigned 64 bit integer</code> as <code>String</code>)</li>
+</ul>
+</li>
+<li><strong>Amount in NQT</strong>
+<ul>
+<li>Key: <code>amountNQT</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+<li><strong>Fees Amount in NQT</strong>
+<ul>
+<li>Key: <code>feeNQT</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+<li><strong>Referenced Transaction Full Hash</strong>
+<ul>
+<li>Key: <code>referencedTransactionFullHash</code></li>
+<li>Value Datatype: <code>string</code></li>
+<li><em>TODO: Figure out if this should be byte array maybe</em></li>
+</ul>
+</li>
+<li><strong>ecBlockHeight</strong>
+<ul>
+<li>Key: <code>ecBlockHeight</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+<li><strong>ecBlockId</strong>
+<ul>
+<li>Key: <code>ecBlockId</code></li>
+<li>Value Datatype: <code>string</code> (<code>Unsigned 64 bit integer</code> as <code>String</code>)</li>
+</ul>
+</li>
+<li><strong>Signature</strong>
+<ul>
+<li>Key: <code>signature</code></li>
+<li>Value Datatype: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+</li>
+<li><strong>Attachment</strong>
+<ul>
+<li>Key: <code>attachment</code></li>
+<li>Value Datatype: <code>array of object</code> (JSON object array)</li>
+</ul>
+</li>
+<li><strong>Version</strong>
+<ul>
+<li>Key: <code>version</code></li>
+<li>Value Datatype: <code>number</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="structure-of-bytes-representation">Structure of Bytes Representation</h2>
+<ol>
+<li>
+<p><strong>Transaction Type</strong></p>
+<ul>
+<li>Datatype: <code>Byte</code></li>
+<li>The type of transaction. <a href="https://signumoasis.xyz/docs/data/transaction/#transaction-types-and-subtypes">(See Transaction Types and Subtypes section)</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction Subtype</strong></p>
+<ul>
+<li>Datatype: <code>byte</code></li>
+<li>The subtype of the transaction. <a href="https://signumoasis.xyz/docs/data/transaction/#transaction-types-and-subtypes">(See Transaction Types and Subtypes section)</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Timestamp</strong></p>
+<ul>
+<li>Datatype: <code>Signed 32 bit integer</code></li>
+<li>The time of the transaction in <em><UNIT></em> since the beginning of the chain.</li>
+<li><em>TODO: LIST TIMEZONE, PROBABLY UTC</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Deadline</strong></p>
+<ul>
+<li>Datatype: <code>Signed 16 bit integer</code></li>
+<li>The deadline to forge a block including this transaction. It will be lost if this passes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Signature</strong></p>
+<ul>
+<li>Datatype: <code>32 raw bytes</code></li>
+<li></li>
+<li>This depends on the block's height and when a certain update was released at block 255000.
+<ul>
+<li>If it is signed, append the public key of the sender.</li>
+<li>If not signed but <em>before</em> AT_FIX_BLOCK_4 upgrade, append the sender's public key.</li>
+<li>If not signed but <em>after</em> the AT_FIX_BLOCK_4 upgrade, append a <code>Signed 64 bit integer</code> that is the sender's account ID, followed by 24 empty bytes (all zeros).</li>
+</ul>
+</li>
+<li><em>TODO: Define AT_FIX_BLOCK_4 better</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Recipient</strong></p>
+<ul>
+<li>Datatype: <code>Signed 64 bit integer</code></li>
+<li>Depends on whether the transaction has a specified single recipient.
+<ul>
+<li>If a recipient exists, include the recipient's ID.</li>
+<li>If no recipient exists, include the 'Zero' account. The value should just be <code>0</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Amount of Signa being Sent in this Transaction</strong></p>
+<ul>
+<li>This field depends on the height of the block for both datatype and value.</li>
+<li>Block height &gt;= Constants.NQT_BLOCK (<code>0</code> for Signum)
+<ul>
+<li>Datatype: <code>Signed 64 bit integer</code></li>
+<li>Amount in NQT.</li>
+</ul>
+</li>
+<li>Block height &lt; Constants.NQT_BLOCK
+<ul>
+<li>Datatype: <code>Signed 32 bit integer</code> </li>
+<li>Amount in NQT divided by One Signa in NQT (100,000,000).</li>
+</ul>
+</li>
+<li><em>TODO: Remove the conditional if <a href="https://github.com/signum-network/signum-node/pull/596">https://github.com/signum-network/signum-node/pull/596</a> is merged</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Amount of Fees for this Transaction</strong></p>
+<ul>
+<li>This field depends on the height of the block for both datatype and value.</li>
+<li>Block height &gt;= Constants.NQT_BLOCK (<code>0</code> for Signum)
+<ul>
+<li>Datatype: <code>Signed 64 bit integer</code></li>
+<li>Amount in NQT.</li>
+</ul>
+</li>
+<li>Block height &lt; Constants.NQT_BLOCK
+<ul>
+<li>Datatype: <code>Signed 32 bit integer</code> </li>
+<li>Amount in NQT divided by One Signa in NQT (100,000,000).</li>
+</ul>
+</li>
+<li><em>TODO: Remove the conditional if <a href="https://github.com/signum-network/signum-node/pull/596">https://github.com/signum-network/signum-node/pull/596</a> is merged</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Referenced Transaction Full Hash</strong></p>
+<ul>
+<li>This field depends on the height of the block for both datatype and value.</li>
+<li>Block height &gt;= Constants.NQT_BLOCK (<code>0</code> for signum)
+<ul>
+<li>Datatype: <code>32 raw bytes</code></li>
+<li>The full hash bytes of the referenced transaction, or 32 empty bytes if no transaction is referenced.</li>
+</ul>
+</li>
+<li>Block height &lt; Constants.NQT_BLOCK
+<ul>
+<li>Datatype: <code>Signed 64 bit integer</code> </li>
+<li>The referenced transaction ID or <code>0</code> if there is no referenced transaction.</li>
+</ul>
+</li>
+<li><em>TODO: Remove the conditional if <a href="https://github.com/signum-network/signum-node/pull/596">https://github.com/signum-network/signum-node/pull/596</a> is merged</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction Signature</strong></p>
+<ul>
+<li>Datatype: <code>64 raw bytes</code></li>
+<li>The signature for this transaction.</li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction Flags</strong></p>
+<ul>
+<li>Optional: Include only if transaction version is greater than zero.</li>
+<li>Datatype: <code>Signed 32 bit integer</code></li>
+<li>A set of bit flags encoded into a single integer via a bitwise OR:
+<ul>
+<li><code>00000001</code> = <em><code>message</code></em> flag </li>
+<li><code>00000010</code> = <em><code>encryptedMessage</code></em> flag</li>
+<li><code>00000100</code> = <em><code>publicKeyAnnouncement</code></em> flag</li>
+<li><code>00001000</code> = <em><code>encryptToSelfMessage</code></em> flag</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction ec Block Height</strong></p>
+<ul>
+<li>Optional: Include only if transaction version is greater than zero.</li>
+<li>Datatype: <code>Signed 32 bit integer</code></li>
+<li><em>TODO: Figure out what <code>ecBlockHeight</code> is</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Transaction ec Block ID</strong></p>
+<ul>
+<li>Optional: Include only if transaction version is greater than zero.</li>
+<li>Datatype: <code>Signed 64 bit integer</code></li>
+<li><em>TODO: Figure out what <code>ecBlockId</code> is</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Appendages</strong></p>
+<ul>
+<li>Datatype: <code>Raw bytes</code></li>
+<li>???</li>
+</ul>
+</li>
+</ol>
+<h2 id="database-fields-in-brs">Database Fields in BRS</h2>
+<h2 id="transaction-types-and-subtypes">Transaction Types and Subtypes</h2>
+<ul>
+<li><strong>Payment</strong>
+<ul>
+<li>Value: <code>0</code></li>
+<li>Subtypes:
+<ul>
+<li>Ordinary Payment
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li>Ordinary Payment Multi-out
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li>Ordinary Payment Same-out
+<ul>
+<li>Value: <code>2</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Messaging</strong>
+<ul>
+<li>Value: <code>1</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Arbitray Message</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>Alias Assignment</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li><em>Account Info</em>
+<ul>
+<li>Value: <code>5</code></li>
+</ul>
+</li>
+<li><em>Alias Sell</em>
+<ul>
+<li>Value: <code>6</code></li>
+</ul>
+</li>
+<li><em>Alias Buy</em>
+<ul>
+<li>Value: <code>7</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Colored Coins</strong>
+<ul>
+<li>Value: <code>2</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Asset Issuance</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>Asset Transfer</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li><em>Ask Order Placement</em>
+<ul>
+<li>Value: <code>2</code></li>
+</ul>
+</li>
+<li><em>Bid Order Placement</em>
+<ul>
+<li>Value: <code>3</code></li>
+</ul>
+</li>
+<li><em>Ask Order Cancellation</em>
+<ul>
+<li>Value: <code>4</code></li>
+</ul>
+</li>
+<li><em>Bid Order Cancellation</em>
+<ul>
+<li>Value: <code>5</code></li>
+</ul>
+</li>
+<li><em>Asset Mint</em>
+<ul>
+<li>Value: <code>6</code></li>
+</ul>
+</li>
+<li><em>Add Treasury Account</em>
+<ul>
+<li>Value: <code>7</code></li>
+</ul>
+</li>
+<li><em>Distribute to Holders</em>
+<ul>
+<li>Value: <code>8</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Digital Goods</strong>
+<ul>
+<li>Value: <code>3</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Listing</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>Delisting</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li><em>Price Change</em>
+<ul>
+<li>Value: <code>2</code></li>
+</ul>
+</li>
+<li><em>Quantity Change</em>
+<ul>
+<li>Value: <code>3</code></li>
+</ul>
+</li>
+<li><em>Purchase</em>
+<ul>
+<li>Value: <code>4</code></li>
+</ul>
+</li>
+<li><em>Delivery</em>
+<ul>
+<li>Value: <code>5</code></li>
+</ul>
+</li>
+<li><em>Feedback</em>
+<ul>
+<li>Value: <code>6</code></li>
+</ul>
+</li>
+<li><em>Refund</em>
+<ul>
+<li>Value: <code>7</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Account Control</strong>
+<ul>
+<li>Value: <code>4</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Effective Balance Leasing</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Mining</strong>
+<ul>
+<li>Value: <code>20</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Reward Recipient Assignment</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>Commitment Add</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li><em>Commitment Remove</em>
+<ul>
+<li>Value: <code>2</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Advanced Payment</strong>
+<ul>
+<li>Value: <code>21</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Escrow Creation</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>Escrow Sign</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+<li><em>Escrow Result</em>
+<ul>
+<li>Value: <code>2</code></li>
+</ul>
+</li>
+<li><em>Subscription Subscribe</em>
+<ul>
+<li>Value: <code>3</code></li>
+</ul>
+</li>
+<li><em>Subscription Cancel</em>
+<ul>
+<li>Value: <code>4</code></li>
+</ul>
+</li>
+<li><em>Subscription Payment</em>
+<ul>
+<li>Value: <code>5</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Automated Transaction</strong>
+<ul>
+<li>Value: <code>22</code></li>
+<li>Subtypes:
+<ul>
+<li><em>Creation</em>
+<ul>
+<li>Value: <code>0</code></li>
+</ul>
+</li>
+<li><em>NXT Payment</em>
+<ul>
+<li>Value: <code>1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;signumoasis.xyz&#x2F;docs&#x2F;api&#x2F;p2p&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; Peer to Peer (P2P) API
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+        
+        
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/aaranxu/adidoks">AdiDoks</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/privacy-policy/">Privacy</a></li>
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://signumoasis.xyz/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://signumoasis.xyz/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/js/search.js" defer></script>
+
+  
+</body>
+</html>

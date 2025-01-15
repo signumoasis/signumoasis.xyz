@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://signumoasis.xyz/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>Peer to Peer (P2P) API | Signum Oasis</title>
+<meta name="description" content="A detailed explanation of the peer to peer API.">
+<link rel="canonical" href="https://signumoasis.xyz/docs/api/p2p/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://signumoasis.xyz/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://signumoasis.xyz/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Api",
+            "item": "https://signumoasis.xyz/docs/api/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "P2p",
+            "item": "https://signumoasis.xyz/docs/api/p2p/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://signumoasis.xyz/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://signumoasis.xyz/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://signumoasis.xyz/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://signumoasis.xyz/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://signumoasis.xyz">Signum Oasis</a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/signum-rust/signumoasis.xyz"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Docs</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://signumoasis.xyz/blog/">Blog</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>Getting Started</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Introduction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>API</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/api/introduction/">Introduction</a></li>
+							                           
+									<li><a class="docs-link active" href="https://signumoasis.xyz/docs/api/p2p/">Peer to Peer (P2P) API</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>Data</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/data/block/">Block</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/data/transaction/">Transaction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+					
+					
+					
+							<h3>Contributing</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/how-to-contribute/">How to Contribute</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>Help</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/help/faq/">FAQ</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+  <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+  	<div class="page-links">
+  			<h3>On this page</h3>
+  			<nav id="TableOfContents">
+  					<ul>
+  							
+  							<li><a href="https://signumoasis.xyz/docs/api/p2p/#basics">Basics</a></li>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/api/p2p/#request-types-virtual-endpoints">Request Types &#x2F; Virtual Endpoints</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#addpeers">addPeers</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getcumulativedifficulty">getCumulativeDifficulty</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getinfo">getInfo</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getmilestoneblockids">getMilestoneBlockIds</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getnextblockids">getNextBlockIds</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getblocksfromheight">getBlocksFromHeight</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getnextblocks">getNextBlocks</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getpeers">getPeers</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#getunconfirmedtransactions">getUnconfirmedTransactions</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#processblock">processBlock</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/api/p2p/#processtransactions">processTransactions</a></li>
+  											
+  									</ul>
+  							
+  							
+  					</ul>
+  			</nav>
+  	</div>
+  </nav>
+  
+
+      <main class="docs-content col-lg-11 col-xl-9">
+        <h1>Peer to Peer (P2P) API</h1>
+        
+        <h2 id="basics">Basics</h2>
+<p>The P2P API consists of a single endpoint that accepts an HTTP POST request
+containing a specifically structured JSON body. All information is passed through
+this single endpoint. The endpoint <em>always</em> returns a <code>200 OK</code> response, but if the
+request is incorrect, the response body will be empty. This is <em>not</em> correct HTTP API
+design at all, but it is what the node does.</p>
+<p>Here is an example request that gets a list of peers the node knows about.</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 58
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getPeers&quot;
+</span><span>}
+</span></code></pre>
+<p>The above example is the minimum required to communicate with the node's P2P API.
+This request is modeled as a raw HTTP request, so it will need to be adapted to
+the programming language in use. Let's break it down.</p>
+<ul>
+<li>The request must be an HTTP 1.1 POST request.</li>
+<li>The <code>host</code> should be the address of the node the software wants to communicate
+with and is required.</li>
+<li>Request Headers
+<ul>
+<li>The <code>User-Agent</code> MUST be <code>BRS/</code> followed by a valid version. Valid versions are
+any version the node you're communicating with will accept. In practice, the node's
+current version or later, and one version older, are valid. <em>NOTE: The node will not
+respond without this header correctly set.</em></li>
+<li>The <code>Connection</code> header is not required, but it is good practice. It lets the node's webserver
+know that it is safe to close the connection after sending a response, and should not expect to
+receive any further data from the client. It is unknown whether the node handles any option
+except <code>close</code> for this header.</li>
+<li>The <code>Content-Type</code> header indicates to the node that it should parse the body as JSON. This
+is required to always be <code>application/json</code>.</li>
+<li>The <code>Content-Length</code> header tells the node how long the body is, in bytes. This should be
+calculated just prior to sending the request. It is required.</li>
+</ul>
+</li>
+<li>Request Body
+<ul>
+<li>The request body is required to be a top-level JSON object. That is, it must begin and end
+with <code>{}</code>.</li>
+<li>The root object must contain the <code>protocol</code> field with the case-sensitive value <code>B1</code>. No other
+protocol version exists and the node will not respond with information if this is incorrect.</li>
+<li>The root object must contain the <code>requestType</code> field. This field defines the information
+being requested and can be thought of as the true 'endpoint' when comparing to a REST API.
+Valid request types are:
+<ul>
+<li><code>addPeers</code></li>
+<li><code>getCumulativeDifficulty</code></li>
+<li><code>getInfo</code></li>
+<li><code>getMilestoneBlockIds</code></li>
+<li><code>getNextBlockIds</code></li>
+<li><code>getBlocksFromHeigt</code></li>
+<li><code>getNextBlocks</code></li>
+<li><code>getPeers</code></li>
+<li><code>getUnconfirmedTransactions</code></li>
+<li><code>processBlock</code></li>
+<li><code>processTransactions</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="request-types-virtual-endpoints">Request Types / Virtual Endpoints</h2>
+<p>All request types will return a single root JSON object containing the information requested
+or data in response to a request for the node to process something.</p>
+<h3 id="addpeers">addPeers</h3>
+<p>Requests that the queried node add the supplied peers to its own database. Allows nodes to
+proactively share nodes.</p>
+<p>Returns an empty JSON root object.</p>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 86
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;addPeers&quot;,
+</span><span>    &quot;peers&quot;:[&quot;127.0.0.1&quot;]
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;addPeers&quot;,
+</span><span style="color:#a3be8c;">    &quot;peers&quot;:[&quot;127.0.0.1&quot;]
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{}
+</span></code></pre>
+<h3 id="getcumulativedifficulty">getCumulativeDifficulty</h3>
+<p>Returns the latest cumulative difficulty of the chain. Cumulative Difficulty is the result of
+a calculation and allows the node to shift to a correct chain if there is a fork. The chosen
+behavior to identify the correct chain is to seek the chain with the highest cumulative difficulty.</p>
+<p>The calculation is:</p>
+<pre data-lang="math" style="background-color:#2b303b;color:#c0c5ce;" class="language-math "><code class="language-math" data-lang="math"><span>previous_cumulative_difficulty + (18446744073709551616 / base_target)
+</span></code></pre>
+<p><em>NOTE: It is unknown why this number was chosen as a constant</em>.</p>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 73
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getCumulativeDifficulty&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getCumulativeDifficulty&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>cumulativeDifficulty</code> the current cumulative difficulty.</li>
+<li><code>blockchainHeight</code> this represents the number of blocks forged since the start of the chain.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">cumulativeDifficulty</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">156571904172004726847</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">blockchainHeight</span><span>&quot;: </span><span style="color:#d08770;">1236261
+</span><span>}
+</span></code></pre>
+<h3 id="getinfo">getInfo</h3>
+<p>Returns basic information about the node.</p>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 216
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getInfo&quot;,
+</span><span>    &quot;announcedAddress&quot;: &quot;nodomain.com:8123&quot;,
+</span><span>    &quot;application&quot;: &quot;BRS&quot;,
+</span><span>    &quot;version&quot;: &quot;3.8.0&quot;,
+</span><span>    &quot;platform&quot;: &quot;Postman Test&quot;,
+</span><span>    &quot;shareAddress&quot;: false
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getInfo&quot;,
+</span><span style="color:#a3be8c;">    &quot;announcedAddress&quot;: &quot;nodomain.com:8123&quot;,
+</span><span style="color:#a3be8c;">    &quot;application&quot;: &quot;BRS&quot;,
+</span><span style="color:#a3be8c;">    &quot;version&quot;: &quot;3.8.0&quot;,
+</span><span style="color:#a3be8c;">    &quot;platform&quot;: &quot;Postman Test&quot;,
+</span><span style="color:#a3be8c;">    &quot;shareAddress&quot;: false
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>announcedAddress</code> the configured address for the node; either an IP:port or host:port combination</li>
+<li><code>application</code> always 'BRS' for the Signum node.</li>
+<li><code>version</code> the node software version.</li>
+<li><code>platform</code> the configured platform field. Likely to be the Signum address of the node runner
+or, by default, the string 'PC'.</li>
+<li><code>shareAddress</code> true or false. Indicates whether the client should share the queried node's address
+to other nodes.</li>
+<li><code>networkName</code> the name of the network this node is running on. 'Signum' for the main Signum
+network. 'TestNet' otherwise.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">announcedAddress</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">p2p.signumoasis.xyz:80</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">application</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">BRS</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">v3.8.0</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">platform</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">S-C9TD-24WW-RUD3-FGHVJ</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">shareAddress</span><span>&quot;: </span><span style="color:#d08770;">true</span><span>,
+</span><span>    &quot;</span><span style="color:#a3be8c;">networkName</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Signum</span><span>&quot;
+</span><span>}
+</span></code></pre>
+<h3 id="getmilestoneblockids">getMilestoneBlockIds</h3>
+<p>Gets the latest common block ids between the requesting node and the target node.
+The behavior of this endpoint differs depending on whether or not the requesting
+node has already located a common milestone block.</p>
+<p>If it has <em>not yet</em> found a common milestone, it will include the field <code>lastBlockId</code> in
+the request to the target node. This will ask the target node to return up to 10 block IDs,
+beginning with the top of its chain and skipping backwards by 10 blocks at at time. This
+will cover 100 blocks of the target node's chain.</p>
+<p>If it already has found a milestone block id, it will instead include the field
+<code>lastMilestoneBlockId</code> in the request to the target node.
+This increases the jump value and searches a greater range for a common milestone.
+It can only happen if we get a common milestone that isn't the same block as
+our max height. If the target node is at block 100 and we're at block 89, the first search
+with <code>lastBlockId</code> should count back by 10s, giving a common block of 80, but the second
+search looks to count backwards by 20s. It will increase the jump distance in relation to
+the distance between the two nodes' heights. This is likely to allow the node to quickly search
+the entire blockchain for a common block.</p>
+<p>If a <code>lastMilestoneBlockId</code> is requested that the target doesn't have, it appears to return
+a the set of blocks identical to the initial query.</p>
+<h4 id="initial-request">Initial Request</h4>
+<p>Example HTTP Request for first request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 111
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getMilestoneBlockIds&quot;,
+</span><span>    &quot;lastBlockId&quot;: 8380252857853969990
+</span><span>}
+</span></code></pre>
+<p>Example curl Request for first request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getMilestoneBlockIds&quot;,
+</span><span style="color:#a3be8c;">    &quot;lastBlockId&quot;: 8380252857853969990
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<h4 id="subsequent-requests">Subsequent Requests</h4>
+<p>Example HTTP Request for subsequent requests:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 123
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getMilestoneBlockIds&quot;,
+</span><span>    &quot;lastMilestoneBlockId&quot;: &quot;13696763374077953626&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request for subsequent requests:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getMilestoneBlockIds&quot;,
+</span><span style="color:#a3be8c;">    &quot;lastMilestoneBlockId&quot;: &quot;13696763374077953626&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>milestoneBlockIds</code> a JSON array of block IDs representing milestones.</li>
+<li><code>last</code> a boolean; true if this is the last block in the target node's chain.
+This field will only appear alongside an array of 1 block ID. This field does not
+display false at all, but will not exist in the JSON object if the block returned
+is not the final block in the chain.</li>
+</ul>
+<p>Example Response when multiple milestones exist:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">milestoneBlockIds</span><span>&quot;: [
+</span><span>        &quot;</span><span style="color:#a3be8c;">6616678099081381479</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">6616678099081381479</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">17628736790110054844</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">3765396070279574404</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">17520803191368754192</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">2365325381121334899</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">7592344070605856558</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">16978480488340389780</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">7188559233614535978</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">950191874937948114</span><span>&quot;
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<p>Example Response when multiple milestones exist (only when sending <code>lastBlockId</code>):</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">milestoneBlockIds</span><span>&quot;: [
+</span><span>        &quot;</span><span style="color:#a3be8c;">950191874937948114</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">last</span><span>&quot;: </span><span style="color:#d08770;">true
+</span><span>}
+</span></code></pre>
+<h3 id="getnextblockids">getNextBlockIds</h3>
+<p>This endpoint returns the IDs of the next up to 100 blocks following the block for which
+an ID is provided.</p>
+<p>If 10 blocks exist, with IDs 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, then calling this action with
+a <code>blockId</code> of '7' will return an array of 8, 9, and 10.</p>
+<p>Request Fields:</p>
+<ul>
+<li><code>blockId</code> the ID of any block in the chain.</li>
+</ul>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 105
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getNextBlockIds&quot;,
+</span><span>    &quot;blockId&quot;: &quot;17655301179078078080&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getNextBlockIds&quot;,
+</span><span style="color:#a3be8c;">    &quot;blockId&quot;: &quot;17655301179078078080&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>nextBlockIds</code> an array of up to 100 block IDs immediately following the ID in the request.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">nextBlockIds</span><span>&quot;: [
+</span><span>        &quot;</span><span style="color:#a3be8c;">17509496500772329464</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">9851554959281573956</span><span>&quot;
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<h3 id="getblocksfromheight">getBlocksFromHeight</h3>
+<p>Returns a JSON object containing an array of entire blocks, ordered oldest to newest,
+starting with the block immediately following the height requested with <code>height</code>, and
+optionally limited to <code>numBlocks</code>.</p>
+<p>Request Fields:</p>
+<ul>
+<li><code>height</code> the height in the blockchain to begin.</li>
+<li><code>numBlocks</code> optional limit on the number of blocks to return.</li>
+</ul>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 111
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getBlocksFromHeight&quot;,
+</span><span>    &quot;height&quot;: 1962,
+</span><span>    &quot;numBlocks&quot;: 2
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getBlocksFromHeight&quot;,
+</span><span style="color:#a3be8c;">    &quot;height&quot;: 1962,
+</span><span style="color:#a3be8c;">    &quot;numBlocks&quot;: 2
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>nextBlocks</code> an array of blocks beginning directly after the height requested.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">nextBlocks</span><span>&quot;: [
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">3</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">501340</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlock</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">4584982169599395303</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalAmountNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeCashBackNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeBurntNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadLength</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generatorPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">f25d24f1ff10c69c23e75b54a9fe50c5ee2bfdd6c3418d09d84fe062b253e23c</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generationSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">ed1bc0818f115fab0cd249bc5c789c7a666b6f90742cc64423767952f9cee959</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlockHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">e7c578b0fd20a13f5b9385a710714386d1d57ff6dfd665a6197c8ca8167faac6</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">b412cfa25280a518080c702e84153478758a4b3640772dd8239aaf74c933e30ddd70ce6b1029e98802778987afad0065aa00f3dd776688a8a7eaf5f69127e2ae</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">transactions</span><span>&quot;: [],
+</span><span>            &quot;</span><span style="color:#a3be8c;">nonce</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">1166774</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">baseTarget</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">139287089</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockATs</span><span>&quot;: </span><span style="color:#d08770;">null
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">3</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">501730</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlock</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">9354106736727793056</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalAmountNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeNQT</span><span>&quot;: </span><span style="color:#d08770;">200000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeCashBackNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeBurntNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadLength</span><span>&quot;: </span><span style="color:#d08770;">334</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">4e48737232b06421ea2b38603f78975a875ca09ff9991d4ca0f5519c0818c0c7</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generatorPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">63cd1465f9dcee200deaeea57be83d1765704420fbd1d980ffde256717927d5a</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generationSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">f6e7cf9cf3cba538f926845c200180a52035f3f3612bf569d95d38f54b562beb</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlockHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">a09dbf518476d081c72a897f2d3836a6ed36837f6dbe2fe5f75f88daef90e2af</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">df5bbee02a813dbc06df695a525bd957220b4ca17e80066a8b81918defcc2f0aaf2916a3927626371be760d61d82bbe28251c7df4bf0d7129f7f1ab4d0d2342b</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">transactions</span><span>&quot;: [
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">501385</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">1440</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0fcf782f9b032b1bbaf34fc68822909f8f3bb6e40fe625b5a50d5cf82eec071d</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">16422175186807093330</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">100000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">4f88a148288c1cf6ba1e2f431f136d9e4e070be9b89d46e9e654db5a286ee1084752a78871dc4437bcbd29d266befa69cc297d2f0b52a685aa63364255fb67c8</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">0
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">1</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">501461</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">1440</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">b2c5645a7a7d137f8e25bf2c3a687ced8bdd2cbf28ded07234e58ed8af4ab341</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13096661501486641671</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">100000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">ca8a63619d79306e261cf21112f5e8b75aa35b33edfa73bafca051dadfdcea0c827a53daf950fe7568c1565d948b30d6ba751c977e5bacab2081e0ef66e35eef</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {
+</span><span>                        &quot;</span><span style="color:#a3be8c;">message</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">7468616e6b732062726f</span><span>&quot;,
+</span><span>                        &quot;</span><span style="color:#a3be8c;">messageIsText</span><span>&quot;: </span><span style="color:#d08770;">false
+</span><span>                    },
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">0
+</span><span>                }
+</span><span>            ],
+</span><span>            &quot;</span><span style="color:#a3be8c;">nonce</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">157680</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">baseTarget</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">146357575</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockATs</span><span>&quot;: </span><span style="color:#d08770;">null
+</span><span>        }
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<h3 id="getnextblocks">getNextBlocks</h3>
+<p>Returns a JSON object containing an array of blocks following a request <code>blockId</code>.
+The number of blocks received from this request is either 1/2 of the Maximum Rollback value,
+or a number set in the node's configuration.</p>
+<p>Request Fields:</p>
+<ul>
+<li><code>blockId</code> the ID of a block in the chain.</li>
+</ul>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 103
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getNextBlocks&quot;,
+</span><span>    &quot;blockId&quot;: &quot;12719136861414771996&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getNextBlocks&quot;,
+</span><span style="color:#a3be8c;">    &quot;blockId&quot;: &quot;12719136861414771996&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>nextBlocks</code> an array of blocks beginning directly after the height requested.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">nextBlocks</span><span>&quot;: [
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">4</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332436</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlock</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">12719136861414771996</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalAmountNQT</span><span>&quot;: </span><span style="color:#d08770;">3400000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeNQT</span><span>&quot;: </span><span style="color:#d08770;">108600000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeCashBackNQT</span><span>&quot;: </span><span style="color:#d08770;">1250000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeBurntNQT</span><span>&quot;: </span><span style="color:#d08770;">103600000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadLength</span><span>&quot;: </span><span style="color:#d08770;">977</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">81e990d0d47783096a959459fe03d5dc1ed0b1725f9420e9049892c0d501c7b7</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generatorPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">2856ad42cf82d40beeb51383771952ea0d76b67c33b88ce69ccea5cdca1a5a32</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generationSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">ebd0ee5d74a45e6a63b82222818623a61e332bf5c1c87093bf04277416f097fb</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlockHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">1c4d342a967383b0257c1bcb8ab3ed73a4fb510a09fd16673dba17224b02b631</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0665aa3eb6ba107eea5f85419809f9f07f0ae3bcd8030e1902719ada5072e60b3d480e8d09fc554f56b5d888cae4008da2ca65367d6cb003edab0a4e0125ea80</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">transactions</span><span>&quot;: [
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332398</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">11130321392388236382</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">df8e0e4316989534eaca8441c759be609652ad4e5e7ffc4139d998bae3375b0356dc187890107aebdd0c8a8bef0f9dc4c7cd7693221c524268aa08bf7cdf2c98</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332400</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13831709662995834087</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">a722057e0a9e2bafbd2335e22415cf2cd569679a7165963e4dcea3dd230f720763b01101737b447bfcc4a63c1061c9481610106885f5c6c5c1facdf489a4c6bf</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">20</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">1</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332277</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">1440</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">6ef637ea38abdaf5aab4c2944251ce89b10b9f4f1e88996fa348706d9f089e07</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236838</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">9840412014607810403</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">d8ed7fe3b96d1e6f61bf2775d2de3529451c869b80b184dc424d5c5e3a490f0fc0cbdb68214944152572d0cea65a6a67d1a7779e03314540660b50c0d2575001</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {
+</span><span>                        &quot;</span><span style="color:#a3be8c;">version.CommitmentAdd</span><span>&quot;: </span><span style="color:#d08770;">1</span><span>,
+</span><span>                        &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000000
+</span><span>                    },
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332268</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13831709662995834087</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236838</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">9840412014607810403</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">54c3c682b0d6e7b54c90ff9b1d0d9c1e73feb9ab8d398f76390f98511c979b040c73fb2f95c2e0965fc6310035895d98d9ca639f9095897e726df1a49eb5cd1f</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332267</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">11130321392388236382</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236838</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">9840412014607810403</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">66f72f975312213abb32069a95f8ec3aebc07b3069739f86d0d877c6b2465c0ff61f74860005a0ead725332ab9f8b22792de60666a41a14bc886a0c5925caf06</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                }
+</span><span>            ],
+</span><span>            &quot;</span><span style="color:#a3be8c;">nonce</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">17170354452813001494</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">baseTarget</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">6032946343509152816</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockATs</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">9949cc89a184bd46f83d3d4cc6d047efcdae2109a21a22b60319e3bdff90b38894e0ceeca74decadb3b6b7775c2f743e</span><span>&quot;
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">4</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332687</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlock</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">14533852665764262390</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalAmountNQT</span><span>&quot;: </span><span style="color:#d08770;">13390000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeNQT</span><span>&quot;: </span><span style="color:#d08770;">106900000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeCashBackNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">totalFeeBurntNQT</span><span>&quot;: </span><span style="color:#d08770;">102900000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadLength</span><span>&quot;: </span><span style="color:#d08770;">808</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">payloadHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">a4c1983e245981f3710f5131c7237f77b8a678ef9303e977bcb839888ac5743c</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generatorPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">59ddca1ec71a228b57de2eb7976bb6de8faec4c47ed9282b65192ed09055db35</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">generationSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">03faf674bc18d95949f94f015a937c6e7317005edc86d19fa13d099ee5d4b1dc</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">previousBlockHash</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">f631bef0fe9db2c98b1770ee884ddd1c30f3ba3aa9628868a667e7787545c063</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockSignature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0fe836d9771642364bb0fd369a1e2a93d4b2554c4a9e4778fe59b1c98a6bb60af78997815c3b68b877fdab3444a6d46a36bfb7609c4943cb1d0c1437b89ee9ed</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">transactions</span><span>&quot;: [
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332661</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13831709662995834087</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">e1bcff2121e8e0f3e9349cc01aa30f15fe555eef3511cac68b42d85006685e0cabf8c4a77102851b485828475559cfb825836302e56c52421becdf36a992d018</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332530</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">11130321392388236382</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">91d42399b2fb6522c38d321ef386ace46a2e38af77a36fadc982e5eb4370530590943616fb0e308a89794c5dfcfa2b61cafadc5b761f2c7ba8ad3ad6e9d358a3</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332531</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13831709662995834087</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">7cc29eacce14bf231a5ed0cdc85fd6d297d2bd2a7794b71ce2631e56b67ea0065b667f4ae01e864599b47032823c3753397086bad6813dd2cacb1e0d61ac1787</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                },
+</span><span>                {
+</span><span>                    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298332660</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">24</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">11130321392388236382</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">500000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">1000000</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236839</span><span>,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">5664028750724787922</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">13420738867631717395</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">629983e40d1545c489ee1b523e12197021284665d96675088bab7dce8cfc8e089791f1e598a88c6889ffa327caf7ddca8cc76ef9f2014577813b56f7e6be2580</span><span>&quot;,
+</span><span>                    &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {},
+</span><span>                    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>                }
+</span><span>            ],
+</span><span>            &quot;</span><span style="color:#a3be8c;">nonce</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">201612246958</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">baseTarget</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">6032678543708253984</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">blockATs</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">516f0885d7915f8c4660998cbc72aa32c04d5eadeb02685163f82fb370d341f433e8cac1145a0c831fdc89c0ee066ac10319e3bdff90b388b92f277dc4a344fa6f2599caa5d15922</span><span>&quot;
+</span><span>        }
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<h3 id="getpeers">getPeers</h3>
+<p>Returns a list of peers the queried node knows about that it is allowed to share.</p>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: us-east.signum.network:8123
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 58
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getPeers&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://us-east.signum.network:8123</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getPeers&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>peers</code> a JSON array of strings containing IP:port or host:port combinations.</li>
+</ul>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">peers</span><span>&quot;: [
+</span><span>        &quot;</span><span style="color:#a3be8c;">158.69.63.213</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">5.161.75.89</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">157.90.168.219</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">canada.signum.network:8123</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">us-east.signum.network:8123</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">europe.signum.network:8123</span><span>&quot;,
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<h3 id="getunconfirmedtransactions">getUnconfirmedTransactions</h3>
+<p>Returns a JSON array with a list of of transaction objects the node is aware of but that have yet
+to be confirmed by being forged into a block.</p>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>POST / HTTP/1.1
+</span><span>Host: p2p.signumoasis.xyz:80
+</span><span>User-Agent: BRS/3.8.0
+</span><span>Connection: close
+</span><span>Content-Type: application/json
+</span><span>Content-Length: 76
+</span><span>
+</span><span>{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;getUnconfirmedTransactions&quot;
+</span><span>}
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;getUnconfirmedTransactions&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>unconfirmedTransactions</code> an array of objects representing transactions.
+Example Response:</li>
+</ul>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">unconfirmedTransactions</span><span>&quot;: [
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: </span><span style="color:#d08770;">2</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">subtype</span><span>&quot;: </span><span style="color:#d08770;">1</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">timestamp</span><span>&quot;: </span><span style="color:#d08770;">298326786</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">deadline</span><span>&quot;: </span><span style="color:#d08770;">1440</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">senderPublicKey</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">789e1ecac7abc4ff7e776f2dedd2e9be6083d010efa0c6913f05507aa77b9340</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">recipient</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">17842702224298695831</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">amountNQT</span><span>&quot;: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">feeNQT</span><span>&quot;: </span><span style="color:#d08770;">2000000</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">ecBlockHeight</span><span>&quot;: </span><span style="color:#d08770;">1236814</span><span>,
+</span><span>            &quot;</span><span style="color:#a3be8c;">ecBlockId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">11396976196756642613</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">cashBackId</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">17909721588112212347</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">signature</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">29f4548fb0a4a509a11c23fe9d8de49becc7d802dde4e56ce427be373b3d24038b0e5dff01438d8a42cb2db9cd76e99997394bb9ec0745911e72629c0bc24193</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">attachment</span><span>&quot;: {
+</span><span>                &quot;</span><span style="color:#a3be8c;">version.AssetTransfer</span><span>&quot;: </span><span style="color:#d08770;">1</span><span>,
+</span><span>                &quot;</span><span style="color:#a3be8c;">asset</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">14328689902698254062</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#a3be8c;">quantityQNT</span><span>&quot;: </span><span style="color:#d08770;">1000000
+</span><span>            },
+</span><span>            &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: </span><span style="color:#d08770;">2
+</span><span>        }
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<h3 id="processblock">processBlock</h3>
+<p>Submits a single block to a node to be processed and recorded.</p>
+<p>This request type is non-standard in that it doesn't use sub-properties of the root
+object to define the block. The request root object is the JSON-serialized block itself,
+with the protocol and requestType properties added directly to it.</p>
+<p>Request Fields:</p>
+<ul>
+<li><code>previousBlock</code> the ID of a block which submitted blocks must follow. Should be the top
+of the blockchain. Used as an initial check to ensure valid blocks are being submitted.</li>
+</ul>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>curl --location &#39;http://p2p.signumoasis.xyz:80&#39; \
+</span><span>--header &#39;User-Agent: BRS/3.8.0&#39; \
+</span><span>--header &#39;Connection: close&#39; \
+</span><span>--header &#39;Content-Type: application/json&#39; \
+</span><span>--data &#39;{
+</span><span>    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span>    &quot;requestType&quot;: &quot;processBlock&quot;,
+</span><span>    &quot;version&quot;: 4,
+</span><span>    &quot;timestamp&quot;: 298354767,
+</span><span>    &quot;previousBlock&quot;: &quot;18369301224889401486&quot;,
+</span><span>    &quot;totalAmountNQT&quot;: 20995342056,
+</span><span>    &quot;totalFeeNQT&quot;: 171800000,
+</span><span>    &quot;totalFeeCashBackNQT&quot;: 1500000,
+</span><span>    &quot;totalFeeBurntNQT&quot;: 165800000,
+</span><span>    &quot;payloadLength&quot;: 1018,
+</span><span>    &quot;payloadHash&quot;: &quot;7fb2df2066af0e12ad2cccd2ae7ae673b3e8ee670ca37d39a34e894aaaf90349&quot;,
+</span><span>    &quot;generatorPublicKey&quot;: &quot;6a7b9f594ec0fbffd2bbe8109d5438be5e7747b9be456cba909773404aeb6278&quot;,
+</span><span>    &quot;generationSignature&quot;: &quot;ae339924f2cc8565d2a553d72b89d3f944d0fa76e042fc10e65852be769ca40c&quot;,
+</span><span>    &quot;previousBlockHash&quot;: &quot;8e40aea923deecfe0c2b1fb8dc31d4ef59197ed192b08a86cc5dbe8bd5c2554e&quot;,
+</span><span>    &quot;blockSignature&quot;: &quot;dacb615761b9a6619c97c9bf8777886eff55b7bce205f53f137d339168f7470fc3b3251a2f00c337636cf3d40617be03dd0c827b4b03ef0c2beeb568d748e6e7&quot;,
+</span><span>    &quot;transactions&quot;: [
+</span><span>        {
+</span><span>            &quot;type&quot;: 0,
+</span><span>            &quot;subtype&quot;: 0,
+</span><span>            &quot;timestamp&quot;: 298354701,
+</span><span>            &quot;deadline&quot;: 24,
+</span><span>            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span>            &quot;recipient&quot;: &quot;11130321392388236382&quot;,
+</span><span>            &quot;amountNQT&quot;: 500000000,
+</span><span>            &quot;feeNQT&quot;: 1000000,
+</span><span>            &quot;ecBlockHeight&quot;: 1236933,
+</span><span>            &quot;ecBlockId&quot;: &quot;15722498062156268369&quot;,
+</span><span>            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span>            &quot;signature&quot;: &quot;a1dd37dffdaec97d65f6b0d615ab06784f0727ca766f8875936eabb676ed30013b732380d0498992b3ea245362a56b7cae9d231bc77b6e66e8464e6a1eb55f93&quot;,
+</span><span>            &quot;attachment&quot;: {},
+</span><span>            &quot;version&quot;: 2
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;type&quot;: 0,
+</span><span>            &quot;subtype&quot;: 1,
+</span><span>            &quot;timestamp&quot;: 298354535,
+</span><span>            &quot;deadline&quot;: 1440,
+</span><span>            &quot;senderPublicKey&quot;: &quot;3cd5610384aed89ace1550e54604b382394520089c14db4747fd1e8f188c5658&quot;,
+</span><span>            &quot;amountNQT&quot;: 14595342056,
+</span><span>            &quot;feeNQT&quot;: 2000000,
+</span><span>            &quot;ecBlockHeight&quot;: 1236932,
+</span><span>            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span>            &quot;cashBackId&quot;: &quot;14532404230105986816&quot;,
+</span><span>            &quot;signature&quot;: &quot;1b8d016bfb2828f1928c98e66f3b4be56f0ff05d73a29c5033df32aa69a3560e95733f15ae93c33940e3cb3f79359c3049137c2553b3a8b152660b1ab83a66ae&quot;,
+</span><span>            &quot;attachment&quot;: {
+</span><span>                &quot;version.MultiOutCreation&quot;: 1,
+</span><span>                &quot;recipients&quot;: [
+</span><span>                    [
+</span><span>                        &quot;17997500163001214854&quot;,
+</span><span>                        &quot;2026541011&quot;
+</span><span>                    ],
+</span><span>                    [
+</span><span>                        &quot;12625359299301436821&quot;,
+</span><span>                        &quot;9405744078&quot;
+</span><span>                    ],
+</span><span>                    [
+</span><span>                        &quot;12779054813723059063&quot;,
+</span><span>                        &quot;3163056967&quot;
+</span><span>                    ]
+</span><span>                ]
+</span><span>            },
+</span><span>            &quot;version&quot;: 2
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;type&quot;: 0,
+</span><span>            &quot;subtype&quot;: 0,
+</span><span>            &quot;timestamp&quot;: 298354571,
+</span><span>            &quot;deadline&quot;: 24,
+</span><span>            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span>            &quot;recipient&quot;: &quot;13831709662995834087&quot;,
+</span><span>            &quot;amountNQT&quot;: 500000000,
+</span><span>            &quot;feeNQT&quot;: 1000000,
+</span><span>            &quot;ecBlockHeight&quot;: 1236932,
+</span><span>            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span>            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span>            &quot;signature&quot;: &quot;73227bbeda56f251d13f02078ce913652a0235937498555268afdc2a9feff90d47c1caf1395eaac8a0f75947964670d26aa2e1226453a405c3536440f5a5447b&quot;,
+</span><span>            &quot;attachment&quot;: {},
+</span><span>            &quot;version&quot;: 2
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;type&quot;: 0,
+</span><span>            &quot;subtype&quot;: 0,
+</span><span>            &quot;timestamp&quot;: 298354569,
+</span><span>            &quot;deadline&quot;: 24,
+</span><span>            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span>            &quot;recipient&quot;: &quot;11130321392388236382&quot;,
+</span><span>            &quot;amountNQT&quot;: 500000000,
+</span><span>            &quot;feeNQT&quot;: 1000000,
+</span><span>            &quot;ecBlockHeight&quot;: 1236932,
+</span><span>            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span>            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span>            &quot;signature&quot;: &quot;3fddd54dbf53441508fa2b7be9f347463bb4a2807f28abe14cf030d99f59360c6b7ed188cf641d38f0b69044a6747eba375a421de121c890cebb63c7d8e1d688&quot;,
+</span><span>            &quot;attachment&quot;: {},
+</span><span>            &quot;version&quot;: 2
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;type&quot;: 0,
+</span><span>            &quot;subtype&quot;: 0,
+</span><span>            &quot;timestamp&quot;: 298354702,
+</span><span>            &quot;deadline&quot;: 24,
+</span><span>            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span>            &quot;recipient&quot;: &quot;13831709662995834087&quot;,
+</span><span>            &quot;amountNQT&quot;: 500000000,
+</span><span>            &quot;feeNQT&quot;: 1000000,
+</span><span>            &quot;ecBlockHeight&quot;: 1236933,
+</span><span>            &quot;ecBlockId&quot;: &quot;15722498062156268369&quot;,
+</span><span>            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span>            &quot;signature&quot;: &quot;25dd574b1023f06b42b144caf77b8863d1f818f960622446c204ae9c0483ed0e78a14d12b9b063c3ea57da57e58107e005f87c996cb4c6d11f7cfe8ac368564e&quot;,
+</span><span>            &quot;attachment&quot;: {},
+</span><span>            &quot;version&quot;: 2
+</span><span>        }
+</span><span>    ],
+</span><span>    &quot;nonce&quot;: &quot;9983631486491223727&quot;,
+</span><span>    &quot;baseTarget&quot;: &quot;6036338955354410456&quot;,
+</span><span>    &quot;blockATs&quot;: &quot;c8b98c03e292de9ab3e1c6f4cdb803bab66cf8ad30b5274f0319e3bdff90b3881acce34052e5895c3e6b3b32e045f230&quot;
+</span><span>}&#39;
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl --location </span><span>&#39;</span><span style="color:#a3be8c;">http://p2p.signumoasis.xyz:80</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">User-Agent: BRS/3.8.0</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Connection: close</span><span>&#39; \
+</span><span style="color:#bf616a;">--header </span><span>&#39;</span><span style="color:#a3be8c;">Content-Type: application/json</span><span>&#39; \
+</span><span style="color:#bf616a;">--data </span><span>&#39;</span><span style="color:#a3be8c;">{
+</span><span style="color:#a3be8c;">    &quot;protocol&quot;: &quot;B1&quot;,
+</span><span style="color:#a3be8c;">    &quot;requestType&quot;: &quot;processBlock&quot;,
+</span><span style="color:#a3be8c;">    &quot;version&quot;: 4,
+</span><span style="color:#a3be8c;">    &quot;timestamp&quot;: 298354767,
+</span><span style="color:#a3be8c;">    &quot;previousBlock&quot;: &quot;18369301224889401486&quot;,
+</span><span style="color:#a3be8c;">    &quot;totalAmountNQT&quot;: 20995342056,
+</span><span style="color:#a3be8c;">    &quot;totalFeeNQT&quot;: 171800000,
+</span><span style="color:#a3be8c;">    &quot;totalFeeCashBackNQT&quot;: 1500000,
+</span><span style="color:#a3be8c;">    &quot;totalFeeBurntNQT&quot;: 165800000,
+</span><span style="color:#a3be8c;">    &quot;payloadLength&quot;: 1018,
+</span><span style="color:#a3be8c;">    &quot;payloadHash&quot;: &quot;7fb2df2066af0e12ad2cccd2ae7ae673b3e8ee670ca37d39a34e894aaaf90349&quot;,
+</span><span style="color:#a3be8c;">    &quot;generatorPublicKey&quot;: &quot;6a7b9f594ec0fbffd2bbe8109d5438be5e7747b9be456cba909773404aeb6278&quot;,
+</span><span style="color:#a3be8c;">    &quot;generationSignature&quot;: &quot;ae339924f2cc8565d2a553d72b89d3f944d0fa76e042fc10e65852be769ca40c&quot;,
+</span><span style="color:#a3be8c;">    &quot;previousBlockHash&quot;: &quot;8e40aea923deecfe0c2b1fb8dc31d4ef59197ed192b08a86cc5dbe8bd5c2554e&quot;,
+</span><span style="color:#a3be8c;">    &quot;blockSignature&quot;: &quot;dacb615761b9a6619c97c9bf8777886eff55b7bce205f53f137d339168f7470fc3b3251a2f00c337636cf3d40617be03dd0c827b4b03ef0c2beeb568d748e6e7&quot;,
+</span><span style="color:#a3be8c;">    &quot;transactions&quot;: [
+</span><span style="color:#a3be8c;">        {
+</span><span style="color:#a3be8c;">            &quot;type&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;subtype&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;timestamp&quot;: 298354701,
+</span><span style="color:#a3be8c;">            &quot;deadline&quot;: 24,
+</span><span style="color:#a3be8c;">            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span style="color:#a3be8c;">            &quot;recipient&quot;: &quot;11130321392388236382&quot;,
+</span><span style="color:#a3be8c;">            &quot;amountNQT&quot;: 500000000,
+</span><span style="color:#a3be8c;">            &quot;feeNQT&quot;: 1000000,
+</span><span style="color:#a3be8c;">            &quot;ecBlockHeight&quot;: 1236933,
+</span><span style="color:#a3be8c;">            &quot;ecBlockId&quot;: &quot;15722498062156268369&quot;,
+</span><span style="color:#a3be8c;">            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span style="color:#a3be8c;">            &quot;signature&quot;: &quot;a1dd37dffdaec97d65f6b0d615ab06784f0727ca766f8875936eabb676ed30013b732380d0498992b3ea245362a56b7cae9d231bc77b6e66e8464e6a1eb55f93&quot;,
+</span><span style="color:#a3be8c;">            &quot;attachment&quot;: {},
+</span><span style="color:#a3be8c;">            &quot;version&quot;: 2
+</span><span style="color:#a3be8c;">        },
+</span><span style="color:#a3be8c;">        {
+</span><span style="color:#a3be8c;">            &quot;type&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;subtype&quot;: 1,
+</span><span style="color:#a3be8c;">            &quot;timestamp&quot;: 298354535,
+</span><span style="color:#a3be8c;">            &quot;deadline&quot;: 1440,
+</span><span style="color:#a3be8c;">            &quot;senderPublicKey&quot;: &quot;3cd5610384aed89ace1550e54604b382394520089c14db4747fd1e8f188c5658&quot;,
+</span><span style="color:#a3be8c;">            &quot;amountNQT&quot;: 14595342056,
+</span><span style="color:#a3be8c;">            &quot;feeNQT&quot;: 2000000,
+</span><span style="color:#a3be8c;">            &quot;ecBlockHeight&quot;: 1236932,
+</span><span style="color:#a3be8c;">            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span style="color:#a3be8c;">            &quot;cashBackId&quot;: &quot;14532404230105986816&quot;,
+</span><span style="color:#a3be8c;">            &quot;signature&quot;: &quot;1b8d016bfb2828f1928c98e66f3b4be56f0ff05d73a29c5033df32aa69a3560e95733f15ae93c33940e3cb3f79359c3049137c2553b3a8b152660b1ab83a66ae&quot;,
+</span><span style="color:#a3be8c;">            &quot;attachment&quot;: {
+</span><span style="color:#a3be8c;">                &quot;version.MultiOutCreation&quot;: 1,
+</span><span style="color:#a3be8c;">                &quot;recipients&quot;: [
+</span><span style="color:#a3be8c;">                    [
+</span><span style="color:#a3be8c;">                        &quot;17997500163001214854&quot;,
+</span><span style="color:#a3be8c;">                        &quot;2026541011&quot;
+</span><span style="color:#a3be8c;">                    ],
+</span><span style="color:#a3be8c;">                    [
+</span><span style="color:#a3be8c;">                        &quot;12625359299301436821&quot;,
+</span><span style="color:#a3be8c;">                        &quot;9405744078&quot;
+</span><span style="color:#a3be8c;">                    ],
+</span><span style="color:#a3be8c;">                    [
+</span><span style="color:#a3be8c;">                        &quot;12779054813723059063&quot;,
+</span><span style="color:#a3be8c;">                        &quot;3163056967&quot;
+</span><span style="color:#a3be8c;">                    ]
+</span><span style="color:#a3be8c;">                ]
+</span><span style="color:#a3be8c;">            },
+</span><span style="color:#a3be8c;">            &quot;version&quot;: 2
+</span><span style="color:#a3be8c;">        },
+</span><span style="color:#a3be8c;">        {
+</span><span style="color:#a3be8c;">            &quot;type&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;subtype&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;timestamp&quot;: 298354571,
+</span><span style="color:#a3be8c;">            &quot;deadline&quot;: 24,
+</span><span style="color:#a3be8c;">            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span style="color:#a3be8c;">            &quot;recipient&quot;: &quot;13831709662995834087&quot;,
+</span><span style="color:#a3be8c;">            &quot;amountNQT&quot;: 500000000,
+</span><span style="color:#a3be8c;">            &quot;feeNQT&quot;: 1000000,
+</span><span style="color:#a3be8c;">            &quot;ecBlockHeight&quot;: 1236932,
+</span><span style="color:#a3be8c;">            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span style="color:#a3be8c;">            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span style="color:#a3be8c;">            &quot;signature&quot;: &quot;73227bbeda56f251d13f02078ce913652a0235937498555268afdc2a9feff90d47c1caf1395eaac8a0f75947964670d26aa2e1226453a405c3536440f5a5447b&quot;,
+</span><span style="color:#a3be8c;">            &quot;attachment&quot;: {},
+</span><span style="color:#a3be8c;">            &quot;version&quot;: 2
+</span><span style="color:#a3be8c;">        },
+</span><span style="color:#a3be8c;">        {
+</span><span style="color:#a3be8c;">            &quot;type&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;subtype&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;timestamp&quot;: 298354569,
+</span><span style="color:#a3be8c;">            &quot;deadline&quot;: 24,
+</span><span style="color:#a3be8c;">            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span style="color:#a3be8c;">            &quot;recipient&quot;: &quot;11130321392388236382&quot;,
+</span><span style="color:#a3be8c;">            &quot;amountNQT&quot;: 500000000,
+</span><span style="color:#a3be8c;">            &quot;feeNQT&quot;: 1000000,
+</span><span style="color:#a3be8c;">            &quot;ecBlockHeight&quot;: 1236932,
+</span><span style="color:#a3be8c;">            &quot;ecBlockId&quot;: &quot;15206958044651677745&quot;,
+</span><span style="color:#a3be8c;">            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span style="color:#a3be8c;">            &quot;signature&quot;: &quot;3fddd54dbf53441508fa2b7be9f347463bb4a2807f28abe14cf030d99f59360c6b7ed188cf641d38f0b69044a6747eba375a421de121c890cebb63c7d8e1d688&quot;,
+</span><span style="color:#a3be8c;">            &quot;attachment&quot;: {},
+</span><span style="color:#a3be8c;">            &quot;version&quot;: 2
+</span><span style="color:#a3be8c;">        },
+</span><span style="color:#a3be8c;">        {
+</span><span style="color:#a3be8c;">            &quot;type&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;subtype&quot;: 0,
+</span><span style="color:#a3be8c;">            &quot;timestamp&quot;: 298354702,
+</span><span style="color:#a3be8c;">            &quot;deadline&quot;: 24,
+</span><span style="color:#a3be8c;">            &quot;senderPublicKey&quot;: &quot;0936031e61748b9a724dc95ee9fc5292e4f5282ac3d1cf3c8d40b4d822e7213c&quot;,
+</span><span style="color:#a3be8c;">            &quot;recipient&quot;: &quot;13831709662995834087&quot;,
+</span><span style="color:#a3be8c;">            &quot;amountNQT&quot;: 500000000,
+</span><span style="color:#a3be8c;">            &quot;feeNQT&quot;: 1000000,
+</span><span style="color:#a3be8c;">            &quot;ecBlockHeight&quot;: 1236933,
+</span><span style="color:#a3be8c;">            &quot;ecBlockId&quot;: &quot;15722498062156268369&quot;,
+</span><span style="color:#a3be8c;">            &quot;cashBackId&quot;: &quot;13420738867631717395&quot;,
+</span><span style="color:#a3be8c;">            &quot;signature&quot;: &quot;25dd574b1023f06b42b144caf77b8863d1f818f960622446c204ae9c0483ed0e78a14d12b9b063c3ea57da57e58107e005f87c996cb4c6d11f7cfe8ac368564e&quot;,
+</span><span style="color:#a3be8c;">            &quot;attachment&quot;: {},
+</span><span style="color:#a3be8c;">            &quot;version&quot;: 2
+</span><span style="color:#a3be8c;">        }
+</span><span style="color:#a3be8c;">    ],
+</span><span style="color:#a3be8c;">    &quot;nonce&quot;: &quot;9983631486491223727&quot;,
+</span><span style="color:#a3be8c;">    &quot;baseTarget&quot;: &quot;6036338955354410456&quot;,
+</span><span style="color:#a3be8c;">    &quot;blockATs&quot;: &quot;c8b98c03e292de9ab3e1c6f4cdb803bab66cf8ad30b5274f0319e3bdff90b3881acce34052e5895c3e6b3b32e045f230&quot;
+</span><span style="color:#a3be8c;">}</span><span>&#39;
+</span></code></pre>
+<p>Response Fields:</p>
+<ul>
+<li><code>accepted</code> true or false depending on whether the blocks were valid to accept or not.</li>
+</ul>
+<p>Example Response if Block is Rejected:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">accepted</span><span>&quot;: </span><span style="color:#d08770;">false
+</span><span>}
+</span></code></pre>
+<p>Example Response if Block is Accepted:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">accepted</span><span>&quot;: </span><span style="color:#d08770;">true
+</span><span>}
+</span></code></pre>
+<h3 id="processtransactions">processTransactions</h3>
+<p>Requests that the node process a list of one or more included transactions.</p>
+<p>Request Fields:</p>
+<ul>
+<li><code>transactions</code> a JSON array of JSON-serialized transaction objects.</li>
+</ul>
+<p>Example HTTP Request:</p>
+<pre data-lang="http" style="background-color:#2b303b;color:#c0c5ce;" class="language-http "><code class="language-http" data-lang="http"><span>
+</span></code></pre>
+<p>Example curl Request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span>
+</span></code></pre>
+<p>Response Fields:</p>
+<p>Example Response:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>
+</span></code></pre>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;signumoasis.xyz&#x2F;docs&#x2F;getting-started&#x2F;introduction&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; Introduction
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          <a class="ms-auto" href="https:&#x2F;&#x2F;signumoasis.xyz&#x2F;docs&#x2F;data&#x2F;block&#x2F;">
+            <div class="card my-1">
+              <div class="card-body py-2">
+                Block &rarr;
+              </div>
+            </div>
+          </a>
+          
+          
+          
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/aaranxu/adidoks">AdiDoks</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/privacy-policy/">Privacy</a></li>
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://signumoasis.xyz/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://signumoasis.xyz/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/js/search.js" defer></script>
+
+  
+</body>
+</html>
