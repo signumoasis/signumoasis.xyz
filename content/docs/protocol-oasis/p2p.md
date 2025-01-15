@@ -1329,7 +1329,7 @@ or data in response to a request for the node to process something.
 ### addPeers
 
 Requests that the queried node add the supplied peers to its own database. Allows nodes to
-proactively share nodes.
+proactively share peers.
 
 Returns an empty JSON root object.
 
