@@ -19,12 +19,16 @@
         let
           devDeps = with pkgs; [
             watchexec
+            zellij
             zola
           ];
           mkDevShell =
             arg1:
             pkgs.mkShell {
-              shellHook = '''';
+              shellHook = ''
+                # TODO: figure out if it's possible to remove this or allow a user's preferred shell
+                exec env SHELL=${pkgs.bashInteractive}/bin/bash zellij --layout ./zellij_layout.kdl
+              '';
               LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
               nativeBuildInputs = devDeps ++ [ arg1 ];
             };
