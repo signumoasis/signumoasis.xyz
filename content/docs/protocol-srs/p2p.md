@@ -942,11 +942,14 @@ of the blockchain. Used as an initial check to ensure valid blocks are being sub
 Example HTTP Request:
 
 ```http
-curl --location 'http://p2p.signumoasis.xyz:80' \
---header 'User-Agent: BRS/3.8.0' \
---header 'Connection: close' \
---header 'Content-Type: application/json' \
---data '{
+POST / HTTP/1.1
+Host: p2p.signumoasis.xyz:80
+User-Agent: BRS/3.8.0
+Connection: close
+Content-Type: application/json
+Content-Length: xx
+
+{
     "protocol": "B1",
     "requestType": "processBlock",
     "version": 4,
@@ -1062,7 +1065,7 @@ curl --location 'http://p2p.signumoasis.xyz:80' \
     "nonce": "9983631486491223727",
     "baseTarget": "6036338955354410456",
     "blockATs": "c8b98c03e292de9ab3e1c6f4cdb803bab66cf8ad30b5274f0319e3bdff90b3881acce34052e5895c3e6b3b32e045f230"
-}'
+}
 ```
 
 Example curl Request:
