@@ -1,8 +1,6 @@
 +++
 title = "Privacy Policy"
 description = "We do not use cookies and we do not collect any personal data."
-date = 2022-02-01T00:00:00+00:00
-updated = 2022-02-01T00:00:00+00:00
 draft = false
 
 [extra]
