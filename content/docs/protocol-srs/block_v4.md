@@ -147,22 +147,26 @@ _NOTE: These are not the actual names of database fields, but just identifiers t
 about these. There are no field names in the bytes representation._
 
 |  # | Data                            | Type                    | Size         |
-|----|---------------------------------|-------------------------|--------------|
+|---:|---------------------------------|-------------------------|--------------|
 |  1 | Version Number                  | `Signed 32-bit integer` | 4 bytes      |
 |  2 | Time Stamp                      | `Signed 32-bit integer` | 4 bytes      |
 |  3 | Previous Block ID               | `Signed 64-bit integer` | 8 bytes      |
 |  4 | Number of Transactions          | `Signed 32-bit integer` | 4 bytes      |
-|  5 | Total Amount of Signa (< v3) *  | `Signed 32-bit integer` | 4 bytes      |
-|  6 | Total Amount of Signa (>= v3) * | `Signed 64-bit integer` | 8 bytes      |
-|  7 | Total Amount of Fees (< v3) *   | `Signed 32-bit integer` | 4 bytes      |
-|  8 | Total Amount of Fees (>= v3) *  | `Signed 64-bit integer` | 8 bytes      |
-|  9 | Length of Payload               | `Signed 32-bit integer` | 4 bytes      |
-| 10 | Payload Hash                    | `32 raw bytes`          | 32 bytes     |
-| 11 | Generator Public Key            | `32 raw bytes`          | 32 bytes     |
-| 12 | Generation Signature            | `32 raw bytes`          | 32 bytes     |
-| 13 | Previous Block Hash             | `32 raw bytes`          | 32 bytes     |
-| 14 | Nonce                           | `Signed 64-bit integer` | 8 bytes      |
-| 15 | AT Bytes                        | `Raw bytes`             | Length of AT |
+| *5 | Total Amount of Signa (< v3)    | `Signed 32-bit integer` | 4 bytes      |
+| *5 | Total Amount of Signa (>= v3)   | `Signed 64-bit integer` | 8 bytes      |
+| *6 | Total Amount of Fees (< v3)     | `Signed 32-bit integer` | 4 bytes      |
+| *6 | Total Amount of Fees (>= v3)    | `Signed 64-bit integer` | 8 bytes      |
+|  7 | Length of Payload               | `Signed 32-bit integer` | 4 bytes      |
+|  8 | Payload Hash                    | `Raw bytes`          | 32 bytes     |
+|  9 | Generator Public Key            | `Raw bytes`          | 32 bytes     |
+| 10 | Generation Signature            | `Raw bytes`          | 32 bytes     |
+| 11 | Previous Block Hash             | `Raw bytes`          | 32 bytes     |
+| 12 | Nonce                           | `Signed 64-bit integer` | 8 bytes      |
+| 13 | AT Bytes                        | `Raw bytes`             | Length of AT |
+
+_* These fields will only appear once. They must be sized differently depending on the version
+of the block. The only block in Signum this might affect is the Genesis block, but it must still
+be taken into account._
 
 1. **Version Number**
   * Description: What block version this block is. As the protocol and data evolve with newer
