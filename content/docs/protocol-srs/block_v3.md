@@ -12,72 +12,94 @@ template = "docs/page.html"
 toc = true
 top = false
 +++
-_WARNING: This is old information and the specific versions of BRS this refers to is unknown._
+<mark>ATTENTION: This page is out of date and waiting to be updated. It may be inaccurate.</mark>
 
-## JSON Model
+A field-by-field description of Signum's v3 block.
 
-NOTE: This is the base json model in the BRS Transaction class. The API contains additional fields that will be discussed on the API page.
+_NOTE: Signum started with block version 3 when forked from NXT. It does not have anything older._
 
-The fields are listed here in the order they are seen in the BRS software. However, json does not require them in this order, so long as they are present.
+## B1 P2P JSON Model
+
+The fields are listed here in the order they are seen from the BRS software's p2p API.
+However, JSON does not require them in this order, so long as they are present.
 
 * **Version**
+  * Description: The version of this block. Should be `3` for block version 3.
   * Key: `version`
-  * Value Datatype: `number`
-* **Timestamp**
+  * Type: `number`
+* **Time Stamp**
+  * Description: The time this block was forged, represented in seconds since the genesis block
+  was forged at *2014-08-11T02:00:00+0000*.
   * Key: `timestamp`
-  * Value Datatype: `number`
+  * Type: `number`
 * **Previous Block ID**
+  * Description: The first 8 bytes of the previous block hash converted into a number.
   * Key: `previousBlock`
-  * Value Datatype: `string` (`Unsigned 64 bit integer` as `String`)
+  * Type: `string` (`Unsigned 64 bit integer` as `String`)
 * **Total Amount of Signa in NQT**
+  * Description: The total amount of Signa transferred in this block, measured in NQT.
   * Key: `totalAmountNQT`
-  * Value Datatype: `number`
+  * Type: `number`
 * **Total Fee in NQT**
+  * Description: The total amount of fees paid in this block, measured in NQT.
   * Key: `totalFeeNQT`
-  * Value Datatype: `number`
+  * Type: `number`
 * **Payload Length**
+  * Description: The total number of bytes of this block's entire payload field.
   * Key: `payloadLength`
-  * Value Datatype: `number`
+  * Type: `number`
 * **Payload Hash**
+  * Description: The SHA-256 hash of all of the data in this block's payload field.
   * Key: `payloadHash`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 * **Generator Public Key**
+  * Description: The public key of the account that forged this block.
   * Key: `generatorPublicKey`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 * **Generation Signature**
+  * Description: The 32-byte generation signature used to forge this block.
   * Key: `generationSignature`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 * **Previous Block Hash**
-  * Only if block version > 1
+  * Description: The SHA-256 hash of the previous block. Used to ensure the blocks are
+  cryptographically linked in correct order. <br>*(NOTE: Only if block version > 1, which should
+  always be the case for Signum.)*
   * Key: `previousBlockHash`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 * **Block Signature**
+  * Description: A hash generated from the forger's private key and the block's contents.
   * Key: `blockSignature`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 * **Transactions**
+  * Description: An array of JSON-formatted objects. (See [Transaction](/docs/protocol-srs/transaction))
   * Key: `transactions`
-  * Value Datatype: `array of object` (See [Transaction](/docs/data/transaction))
+  * Type: `array of object`
 * **Nonce**
+  * Description: The nonce number used to forge this block.
   * Key: `nonce`
-  * Value Datatype: `string` (`Unsigned 64 bit integer` as `String`)
+  * Type: `string` (`Unsigned 64 bit integer` as `String`)
 * **Base Target**
+  * Description: A value set by the node used in forging the block, adjusted each block to try and
+  keep an average 4-minute per block time.
   * Key: `baseTarget`
-  * Value Datatype: `string` (`Unsigned 64 bit integer` as `String`)
+  * Type: `string` (`Unsigned 64 bit integer` as `String`)
 * **Block ATs**
+  * Description: The bytes of an AT that may be present in this block.
   * Key: `blockATs`
-  * Value Datatype: `string` (Hex encoded bytes)
+  * Type: `string` (Hex encoded bytes)
 
-## Structure of Bytes Representation
+## Representation of Bytes When Verifying
 
-Here is the list of fields that should exist on a block in memory to properly create the hash and forge the block.
+Here is the list of fields that should exist on a block in memory to properly create the hash
+and forge the block.
 
 Notes about the structure:
 
 * The byte order must be Little Endian.
 * The bytes must be directly concatenated in a single large buffer.
 * The length of the buffer will change depending on the block version and if any ATs are added.
-* There are additional fields related to blocks that do not get included in this, but are necessary to store.
-    See the database structures.
+* There is additional information related to blocks that does not get included in this calculation,
+but are necessary to store for operational quickness.
 
 1. **Block Version Number**
     * Datatype: `Signed 32 bit integer`
@@ -137,103 +159,3 @@ Notes about the structure:
     * Datatype: `64 raw bytes`
     * A hash generated from the forger's private key and the block contents.
 
-## Database Fields in BRS
-
-_NOTE: THIS SECTION IS INCOMPLETE_.
-
-This is a list of the fields seen in the node database along with their database built-in datatypes.
-This is unlikely to change with versions of the node unless a new block version is debuted.
-
-<!-- * **List of Transaction IDs**
-  * A list of all the transactions' IDs that are included in this block.
-* **Cumulative Difficulty**
-  * This is used to prevent nothing-at-stake problems during potential forks.
-  * Calculated with `PreviousCumulativeDifficulty + (18446744073709551616 / base target)`
-* **Base Target**
-  * Base target to be used when forging this block
-  * _TODO: Reword this definition to remove the recursion_
-* **Height**
-  * The height of this block in the chain.
-* **Block ID**
-  * The first 8 bytes of this block's contents converted into a number.
-  * _TODO: Add the datatype of the number_ -->
-
-* **Database ID**
-  * Field name: `db_id`
-  * Data type: `BIGINT`
-
-* **Block ID**
-  * Field name: `id`
-  * Data type: `BIGINT`
-
-* **Version**
-  * Field name: `version`
-  * Data type: `INTEGER`
-
-* **Timestamp**
-  * Field name: `timestamp`
-  * Data type: `INTEGER`
-
-* **Previous Block ID**
-  * Field name: `previous_block_id`
-  * Data type: `INTEGER`
-
-* **Total Amount**
-  * Field name: `total_amount`
-  * Data type: `BIGINT`
-
-* **Total Fee**
-  * Field name: `total_fee`
-  * Data type: `BIGINT`
-
-* **Payload Length**
-  * Field name: `payload_length`
-  * Data type: `INTEGER`
-
-* **Generator Public Key**
-  * Field name: `generator_public_key`
-  * Data type: `VARBINARY`
-
-* **Previous Block Hash**
-  * Field name: `previous_block_hash`
-  * Data type: `VARBINARY`
-
-* **Cumulative Difficulty**
-  * Field name: `cumulative_difficulty`
-  * Data type: `VARBINARY`
-
-* **Base Target**
-  * Field name: `base_target`
-  * Data type: `BIGINT`
-
-* **Next Block ID**
-  * Field name: `next_block_id`
-  * Data type: `BIGINT`
-
-* **Height**
-  * Field name: `height`
-  * Data type: `INTEGER`
-
-* **Generation Signature**
-  * Field name: `generation_signature`
-  * Data type: `VARBINARY`
-
-* **Block Signature**
-  * Field name: `block_signature`
-  * Data type: `VARBINARY`
-
-* **Payload Hash**
-  * Field name: `payload_hash`
-  * Data type: `VARBINARY`
-
-* **Generator ID**
-  * Field name: `generator_id`
-  * Data type: `BIGINT`
-
-* **Nonce**
-  * Field name: `none`
-  * Data type: `BIGINT`
-
-* **Block ATs**
-  * Field name: `ats`
-  * Data type: `VARBINARY`
