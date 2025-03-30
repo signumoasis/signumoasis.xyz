@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://signumoasis.xyz/fonts/vendor/jost/jost-v4-latin-700.woff2"  type="font/woff2" crossorigin>
+
+
+<link rel="stylesheet" href="https://signumoasis.xyz/main.css">
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+
+	
+
+
+	
+
+<title>Block (Version 4) | Signum Oasis</title>
+<meta name="description" content="A description of a single version 3 block.">
+<link rel="canonical" href="https://signumoasis.xyz/docs/protocol-srs/block-v4/">
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://signumoasis.xyz/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://signumoasis.xyz/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Protocol Srs",
+            "item": "https://signumoasis.xyz/docs/protocol-srs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Block V4",
+            "item": "https://signumoasis.xyz/docs/protocol-srs/block-v4/"
+          },
+        
+      
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="theme-color" content="#fff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://signumoasis.xyz/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://signumoasis.xyz/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://signumoasis.xyz/favicon-16x16.png">
+  
+    <link rel="manifest" href="https://signumoasis.xyz/site.webmanifest" crossorigin>
+  
+
+
+  
+
+</head>
+
+  
+
+<body class="docs single">
+  
+  
+  
+  
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+	<div class="container">
+		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
+		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="https://signumoasis.xyz">Signum Oasis</a>
+		<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+		</button>
+		<ul class="navbar-nav fork-me order-3 order-md-5">
+			
+				
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/signum-rust/signumoasis.xyz"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+					</li>
+				
+			
+		</ul>
+		<div class="collapse navbar-collapse order-4 order-md-1">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+				
+					
+				
+				
+				
+					
+						<li class="nav-item docs active">
+							<a class="nav-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Docs</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="https://signumoasis.xyz/blog/">Blog</a>
+						</li>
+					
+				
+			</ul>
+			<div class="break order-6 d-md-none"></div>
+			
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput" class="form-control is-search" type="search" placeholder="Search docs..."
+						aria-label="Search docs..." autocomplete="off">
+					<div id="suggestions" class="shadow bg-white rounded"></div>
+				</form>
+			
+		</div>
+	</div>
+</header>
+
+
+
+  
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row flex-xl-nowrap">
+	  
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+	<nav class="docs-links" aria-label="Main navigation">
+			
+			
+			
+			
+					
+					
+					
+							<h3>Getting Started</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/getting-started/introduction/">Introduction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>SRS Protocol</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/protocol-srs/introduction/">Introduction</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/protocol-srs/p2p/">Peer to Peer (P2P) API</a></li>
+							                           
+									<li><a class="docs-link active" href="https://signumoasis.xyz/docs/protocol-srs/block-v4/">Block (Version 4)</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/protocol-srs/block-v3/">Block (Version 3)</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/protocol-srs/transaction/">Transaction</a></li>
+							
+					</ul>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+							<h3>Contributing</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/how-to-contribute/">How to Contribute</a></li>
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+							
+					</ul>
+					
+					
+					
+					
+							<h3>Help</h3>
+							<ul class="list-unstyled">
+							                           
+									<li><a class="docs-link" href="https://signumoasis.xyz/docs/help/faq/">FAQ</a></li>
+							
+					</ul>
+					
+					
+			
+	</nav>
+</div>
+
+	  
+  
+  <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+  	<div class="page-links">
+  			<h3>On this page</h3>
+  			<nav id="TableOfContents">
+  					<ul>
+  							
+  							<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#b1-p2p-json-model">B1 P2P JSON Model</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#version">Version</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#time-stamp">Time Stamp</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#previous-block-id">Previous Block ID</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#total-amount-of-signa-in-nqt">Total Amount of Signa in NQT</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#total-fee-in-nqt">Total Fee in NQT</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#total-fee-towards-cash-back-nqt">Total Fee Towards Cash Back NQT</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#total-fee-burnt-in-nqt">Total Fee Burnt in NQT</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#payload-length">Payload Length</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#payload-hash">Payload Hash</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#generator-public-key">Generator Public Key</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#generation-signature">Generation Signature</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#previous-block-hash">Previous Block Hash</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#block-signature">Block Signature</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#transactions">Transactions</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#nonce">Nonce</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#base-target">Base Target</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#block-ats">Block ATs</a></li>
+  											
+  									</ul>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#representation-of-bytes-when-verifying">Representation of Bytes When Verifying</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#additional-fields-needed-in-database">Additional Fields Needed in Database</a></li>
+  											
+  									</ul>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#block-signature-1">Block Signature</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#inputs">Inputs</a></li>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#algorithm">Algorithm</a></li>
+  											
+  									</ul>
+  							
+  							
+  							<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#related-algorithms">Related Algorithms</a></li>
+  							
+  									<ul>
+  											
+  											<li><a href="https://signumoasis.xyz/docs/protocol-srs/block-v4/#bytes-to-long-le">Bytes to Long LE</a></li>
+  											
+  									</ul>
+  							
+  							
+  					</ul>
+  			</nav>
+  	</div>
+  </nav>
+  
+
+      <main class="docs-content col-lg-11 col-xl-9">
+        <h1>Block (Version 4)</h1>
+        
+        <p>A field-by-field description of Signum's v4 block.</p>
+<p><em>NOTE: Signum started with block version 3 when forked from NXT. The only older block is the
+genesis block, which has a version of <code>-1</code>.</em></p>
+<h2 id="b1-p2p-json-model">B1 P2P JSON Model</h2>
+<p>The fields are listed here in the order they are seen from the BRS software's p2p API.
+However, JSON does not require them in this order, so long as they are present.</p>
+<h3 id="version">Version</h3>
+<p>The version of this block. Should be <code>4</code> for block version 4.</p>
+<ul>
+<li>Key: <code>version</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="time-stamp">Time Stamp</h3>
+<p>The time this block was forged, represented in seconds since the genesis block
+was forged at <em>2014-08-11T02:00:00+0000</em>.</p>
+<ul>
+<li>Key: <code>timestamp</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="previous-block-id">Previous Block ID</h3>
+<p>The first 8 bytes of the previous block hash converted into a number.</p>
+<ul>
+<li>Key: <code>previousBlock</code></li>
+<li>Type: <code>string</code> (<code>Unsigned 64 bit integer</code> as <code>String</code>)</li>
+</ul>
+<h3 id="total-amount-of-signa-in-nqt">Total Amount of Signa in NQT</h3>
+<p>The total amount of Signa transferred in this block, measured in NQT.</p>
+<ul>
+<li>Key: <code>totalAmountNQT</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="total-fee-in-nqt">Total Fee in NQT</h3>
+<p>The total amount of fees paid in this block, measured in NQT.</p>
+<ul>
+<li>Key: <code>totalFeeNQT</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="total-fee-towards-cash-back-nqt">Total Fee Towards Cash Back NQT</h3>
+<p>The total amount of Signa sent to cash back in this block, measured in NQT.</p>
+<ul>
+<li>Key: <code>totalFeeCashBackNQT</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="total-fee-burnt-in-nqt">Total Fee Burnt in NQT</h3>
+<p>The total amount of Signa burnt in this block, measured in NQT.</p>
+<ul>
+<li>Key: <code>totalFeeBurntNQT</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="payload-length">Payload Length</h3>
+<p>The total number of bytes of this block's entire payload field.</p>
+<ul>
+<li>Key: <code>payloadLength</code></li>
+<li>Type: <code>number</code></li>
+</ul>
+<h3 id="payload-hash">Payload Hash</h3>
+<p>The SHA-256 hash of all of the data in this block's payload field.</p>
+<ul>
+<li>Key: <code>payloadHash</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h3 id="generator-public-key">Generator Public Key</h3>
+<p>The public key of the account that forged this block.</p>
+<ul>
+<li>Key: <code>generatorPublicKey</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h3 id="generation-signature">Generation Signature</h3>
+<p>The 32-byte generation signature used to forge this block.</p>
+<ul>
+<li>Key: <code>generationSignature</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h3 id="previous-block-hash">Previous Block Hash</h3>
+<p>The SHA-256 hash of the previous block. Used to ensure the blocks are
+cryptographically linked in correct order. <br><em>(NOTE: Only if block version &gt; 1, which should
+always be the case for Signum.)</em></p>
+<ul>
+<li>Key: <code>previousBlockHash</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h3 id="block-signature">Block Signature</h3>
+<p>A hash generated from the forger's private key and the block's contents.</p>
+<ul>
+<li>Key: <code>blockSignature</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h3 id="transactions">Transactions</h3>
+<p>An array of JSON-formatted objects. (See <a href="/docs/protocol-srs/transaction">Transaction</a>)</p>
+<ul>
+<li>Key: <code>transactions</code></li>
+<li>Type: <code>array of object</code></li>
+</ul>
+<h3 id="nonce">Nonce</h3>
+<p>The nonce number used to forge this block.</p>
+<ul>
+<li>Key: <code>nonce</code></li>
+<li>Type: <code>string</code> (<code>Unsigned 64 bit integer</code> as <code>String</code>)</li>
+</ul>
+<h3 id="base-target">Base Target</h3>
+<p>A value set by the node used in forging the block, adjusted each block to try and
+keep an average 4-minute per block time.</p>
+<ul>
+<li>Key: <code>baseTarget</code></li>
+<li>Type: <code>string</code> (<code>Unsigned 64 bit integer</code> as <code>String</code>)</li>
+</ul>
+<h3 id="block-ats">Block ATs</h3>
+<p>The bytes of an AT that may be present in this block.</p>
+<ul>
+<li>Key: <code>blockATs</code></li>
+<li>Type: <code>string</code> (Hex encoded bytes)</li>
+</ul>
+<h2 id="representation-of-bytes-when-verifying">Representation of Bytes When Verifying</h2>
+<p>Here is the list of fields that should exist on a block in memory to properly create the hash
+and forge the block. The table is a short quick-reference and more details about each field are
+available in the list below it.</p>
+<p>Notes about the structure:</p>
+<ul>
+<li>The byte order must be Little Endian.</li>
+<li>The bytes must be concatenated in a single large buffer without padding, field markers, or names.</li>
+<li>The length of the buffer will change depending on the block version and if any ATs are added.</li>
+<li>There is additional information related to blocks that does not get included in this calculation,
+but are necessary to store for operational quickness.</li>
+</ul>
+<p><em>NOTE: These are not the actual names of database fields, but just identifiers to use when talking
+about these. There are no field names in the bytes representation.</em></p>
+<table><thead><tr><th style="text-align: right">#</th><th>Data</th><th>Type</th><th>Size</th></tr></thead><tbody>
+<tr><td style="text-align: right">1</td><td>Version Number</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">2</td><td>Time Stamp</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">3</td><td>Previous Block ID</td><td><code>Signed 64-bit integer</code></td><td>8 bytes</td></tr>
+<tr><td style="text-align: right">4</td><td>Number of Transactions</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">*5</td><td>Total Amount of Signa (&lt; v3)</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">*5</td><td>Total Amount of Signa (&gt;= v3)</td><td><code>Signed 64-bit integer</code></td><td>8 bytes</td></tr>
+<tr><td style="text-align: right">*6</td><td>Total Amount of Fees (&lt; v3)</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">*6</td><td>Total Amount of Fees (&gt;= v3)</td><td><code>Signed 64-bit integer</code></td><td>8 bytes</td></tr>
+<tr><td style="text-align: right">7</td><td>Length of Payload</td><td><code>Signed 32-bit integer</code></td><td>4 bytes</td></tr>
+<tr><td style="text-align: right">8</td><td>Payload Hash</td><td><code>Raw bytes</code></td><td>32 bytes</td></tr>
+<tr><td style="text-align: right">9</td><td>Generator Public Key</td><td><code>Raw bytes</code></td><td>32 bytes</td></tr>
+<tr><td style="text-align: right">10</td><td>Generation Signature</td><td><code>Raw bytes</code></td><td>32 bytes</td></tr>
+<tr><td style="text-align: right">11</td><td>Previous Block Hash</td><td><code>Raw bytes</code></td><td>32 bytes</td></tr>
+<tr><td style="text-align: right">12</td><td>Nonce</td><td><code>Signed 64-bit integer</code></td><td>8 bytes</td></tr>
+<tr><td style="text-align: right">13</td><td>AT Bytes</td><td><code>Raw bytes</code></td><td>Length of AT</td></tr>
+</tbody></table>
+<p><em>* These fields will only appear once. They must be sized differently depending on the version
+of the block. The only block in Signum this might affect is the Genesis block, but it must still
+be taken into account.</em></p>
+<ol>
+<li><strong>Version Number</strong></li>
+</ol>
+<ul>
+<li>Description: What block version this block is. As the protocol and data evolve with newer
+versions of the software, this will increment.</li>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+<li>Current version: <code>3</code></li>
+</ul>
+<ol start="2">
+<li><strong>Timestamp</strong></li>
+</ol>
+<ul>
+<li>Description: The time this block was forged, represented in seconds since the genesis block
+was forged at <em>2014-08-11T02:00:00+0000</em>.</li>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+</ul>
+<ol start="3">
+<li><strong>Previous Block ID</strong></li>
+</ol>
+<ul>
+<li>Description: The first 8 bytes of the previous block hash converted into a number.</li>
+<li>Length: 8 bytes</li>
+<li>Type: <code>Signed 64-bit integer</code></li>
+</ul>
+<ol start="4">
+<li><strong>Number of Transactions</strong></li>
+</ol>
+<ul>
+<li>Description: The total number of transactions included in this block.</li>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+</ul>
+<ol start="5">
+<li><strong>Total amount of Signa</strong></li>
+</ol>
+<ul>
+<li>Description: The sum of the coins sent in transactions in this block.</li>
+<li>Block version &lt; 3
+<ul>
+<li>NOTE: Not relevant to Signum - holdover from NXT</li>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+<li>Value: total amount of NQT / 100000000</li>
+</ul>
+</li>
+<li>Block version &gt;= 3
+<ul>
+<li>Type: <code>Signed 64-bit integer</code></li>
+<li>Length: 8 bytes</li>
+<li>Value: total amount of NQT</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>Total amount of Fees charged</strong></li>
+</ol>
+<ul>
+<li>Description: The sum of the fees charged for messages, transactions, and smart contracts
+running in this block. This amount goes to the account that forged this block.</li>
+<li>Block version &lt; 3
+<ul>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+<li>Value: total amount of NQT / 100000000</li>
+</ul>
+</li>
+<li>Block version &gt;= 3
+<ul>
+<li>Type: <code>Signed 64-bit integer</code></li>
+<li>Length: 8 bytes</li>
+<li>Value: total amount of NQT</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li><strong>Length of Payload</strong></li>
+</ol>
+<ul>
+<li>Description: The total number of bytes of the entire payload field.</li>
+<li>Type: <code>Signed 32-bit integer</code></li>
+<li>Length: 4 bytes</li>
+</ul>
+<ol start="8">
+<li><strong>Payload Hash</strong></li>
+</ol>
+<ul>
+<li>Description: A SHA-256 hash of all the data in this block's payload field.</li>
+<li>Type: <code>32 raw bytes</code></li>
+<li>Length: 32 bytes</li>
+</ul>
+<ol start="9">
+<li><strong>Generator Public Key</strong></li>
+</ol>
+<ul>
+<li>Description: The public key of the account that forged this block.</li>
+<li>Type: <code>32 raw bytes</code></li>
+<li>Length: 32 bytes</li>
+</ul>
+<ol start="10">
+<li><strong>Generation Signature</strong></li>
+</ol>
+<ul>
+<li>Description: The 32-byte generation signature used to forge this block.</li>
+<li>Type: <code>32 raw bytes</code></li>
+<li>Length: 32 bytes</li>
+</ul>
+<ol start="11">
+<li><strong>Previous Block Hash</strong></li>
+</ol>
+<ul>
+<li>Description: The SHA-256 hash of the contents of the previous block.</li>
+<li>Block version &gt; 1 (ALWAYS for Signum)</li>
+<li>Type: <code>32 raw bytes</code></li>
+<li>Length: 32 bytes</li>
+</ul>
+<ol start="12">
+<li><strong>Nonce</strong></li>
+</ol>
+<ul>
+<li>Description: The nonce (one-time use number) used to forge this block.</li>
+<li>Type: <code>Signed 64-bit integer</code></li>
+<li>Length: 8 bytes</li>
+</ul>
+<ol start="13">
+<li><strong>AT Bytes</strong></li>
+</ol>
+<ul>
+<li>Description: The bytes of an AT that may be present in this block</li>
+<li>Type: <code>Raw bytes, length of AT</code></li>
+<li>Length: (total length of ATs, or 0 if no ATs)</li>
+<li>Optional</li>
+</ul>
+<!-- NOTE: The block signature (final 64 bits) is stripped from getBytes() for signing. Consider removing here -->
+<!--14. **Block Signature**-->
+<!--  * Description: A hash generated from the forger's private key and the block contents.-->
+<!--  * Type: `64 raw bytes`-->
+<!--  * Length: 64 bytes-->
+<h3 id="additional-fields-needed-in-database">Additional Fields Needed in Database</h3>
+<p><mark><em>NOTE: THIS SECTION IS INCOMPLETE AND MAY BE INACCURATE.</em></mark></p>
+<p>This is a list of additional fields that are not included in the block hashing process
+but which should be stored in the database. It is likely most, if not all of this, can be
+derived from the data required to create the block, but this is not guaranteed.</p>
+<ul>
+<li>
+<p><strong>Database ID</strong></p>
+<ul>
+<li>Description: The ID of the block in the database. Can be the Block ID or height if desired.
+Just a way to uniquely identify the database record.</li>
+<li>Field name: <code>db_id</code></li>
+<li>Type: <code>BIGINT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Block ID</strong></p>
+<ul>
+<li>Description: The block ID. A hash of the block's signed bytes where the first 8 bytes are
+converted to a 64-bit integer to be used as the ID.</li>
+<li>Field name: <code>id</code></li>
+<li>Type: <code>BIGINT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Cumulative Difficulty</strong></p>
+<ul>
+<li>Field name: <code>cumulative_difficulty</code></li>
+<li>Type: <code>VARBINARY</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Base Target</strong></p>
+<ul>
+<li>Field name: <code>base_target</code></li>
+<li>Type: <code>BIGINT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Next Block ID</strong></p>
+<ul>
+<li>Field name: <code>next_block_id</code></li>
+<li>Type: <code>BIGINT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Height</strong></p>
+<ul>
+<li>Field name: <code>height</code></li>
+<li>Type: <code>INTEGER</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Generator ID</strong></p>
+<ul>
+<li>Field name: <code>generator_id</code></li>
+<li>Type: <code>BIGINT</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Total Fees for Cash Back</strong></p>
+<ul>
+<li>Description: Non-authoritative. A convenience field to speed up data retrieval. Value
+calculated from total fees * a percentage. ( <em>NOTE: This is speculation.</em> )</li>
+<li>Field name: <code>total_fee_cash_back</code></li>
+<li>Type: <code>INTEGER</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Total Fees Burnt</strong></p>
+<ul>
+<li>Description: Non-authoritative. A convenience field to speed up data retrieval. Value
+calculated from transactions sent to known &quot;burn&quot; accounts.</li>
+<li>Field name: <code>total_fee_burnt</code></li>
+<li>Type: <code>INTEGER</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="block-signature-1">Block Signature</h2>
+<h3 id="inputs">Inputs</h3>
+<ul>
+<li>Message
+<ul>
+<li>Description: The bytes to sign</li>
+<li>Type: <code>byte[]</code> -- array of bytes</li>
+</ul>
+</li>
+<li>Private Key
+<ul>
+<li>Description: The bytes of the private key used to sign the message</li>
+<li>Type: <code>byte[]</code> -- array of bytes</li>
+</ul>
+</li>
+</ul>
+<h3 id="algorithm">Algorithm</h3>
+<ol>
+<li>Get a SHA-256 hash of the message bytes.</li>
+<li>Sign the hash with the private key using the EC25519 algorithm.</li>
+<li>Use the signed bytes or store them.</li>
+</ol>
+<h2 id="related-algorithms">Related Algorithms</h2>
+<h3 id="bytes-to-long-le">Bytes to Long LE</h3>
+<p>The SRS java implementation of the conversion from a SHA-256 of the block's bytes (with signature)
+into a 64-bit integer using little endian during the conversion, resulting in the block ID.</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">public long </span><span style="color:#bf616a;">bytesToLongLE</span><span>(</span><span style="color:#b48ead;">byte[]</span><span> bytes, </span><span style="color:#b48ead;">int</span><span> offset) {
+</span><span>    </span><span style="color:#b48ead;">return </span><span>((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset] &amp; </span><span style="color:#d08770;">0xFF</span><span>))
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">1</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">8</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">2</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">16</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">3</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">24</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">4</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">32</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">5</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">40</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">6</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">48</span><span>)
+</span><span>            | (((</span><span style="color:#b48ead;">long</span><span>) (bytes[offset + </span><span style="color:#d08770;">7</span><span>] &amp; </span><span style="color:#d08770;">0xFF</span><span>)) &lt;&lt; </span><span style="color:#d08770;">56</span><span>);
+</span><span>}
+</span></code></pre>
+
+        
+        
+<div class="docs-navigation d-flex justify-content-between">
+  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+            
+              
+              <a href="https:&#x2F;&#x2F;signumoasis.xyz&#x2F;docs&#x2F;getting-started&#x2F;introduction&#x2F;">
+                <div class="card my-1">
+                  <div class="card-body py-2">
+                    &larr; Introduction
+                  </div>
+                </div>
+              </a>
+            
+            
+            
+          
+        
+      
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+          
+          
+          
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+      
+      
+        
+      
+    
+  
+</div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+  
+    
+<footer class="footer text-muted">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-last order-lg-first">
+				<ul class="list-inline">
+					
+						<li class="list-inline-item">Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/aaranxu/adidoks">AdiDoks</a></li>
+					
+				</ul>
+			</div>
+			<div class="col-lg-8 order-first order-lg-last text-lg-end">
+				<ul class="list-inline">
+					
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/privacy-policy/">Privacy</a></li>
+						
+							<li class="list-inline-item"><a href="https://signumoasis.xyz/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+  
+
+  
+<script type="text/javascript" src="https://signumoasis.xyz/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://signumoasis.xyz/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://signumoasis.xyz/js/search.js" defer></script>
+
+  
+</body>
+</html>
