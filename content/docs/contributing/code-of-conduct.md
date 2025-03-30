@@ -14,6 +14,6 @@ toc = true
 top = false
 +++
 
-## It's Simple
+**It's Simple**
 1) Be kind to everyone, no matter what.
 2) If you are not, you may not participate.
